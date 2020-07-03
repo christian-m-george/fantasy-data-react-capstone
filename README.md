@@ -1,69 +1,110 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Movie Forum Capstone
 
-## Available Scripts
+Fantasy Data capstone allows users to research players for the upcoming fantasy football season, compare relevant statistics and add them to a watchlist.
 
-In the project directory, you can run:
+## Working Prototype
+You can access a working prototype of the node app here: https://movie-forum-capstone-server.herokuapp.com/ 
 
-### `npm start`
+You can access a working prototype of the react app here:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## User Stories
+This app is for two types of users; a visitor, and a logged-in user
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+#### Landing Page
+* as a visitor
+* I want to understand what I can do with this app (or sign up, or log in)
+* so I can decide if I want to use it
 
-### `npm test`
+#### Sign Up
+* as a visitor
+* I want to register to use this app
+* so I can create a personal Lego® inventory
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Wireframe
+Landing/Login Page |
+:-------------------------:|
+![Landing/Login Page](/github-images/wireframes/Landing-Page.png)  |
 
-### `npm run build`
+Registration 
+!https://repl.it/@ChristianGeorge/Capstone-Login-Wireframe
+User enters username and confirms password -> if criteria is not met an alert is generated -> once criteria is met user is directed to homepage
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Login
+https://repl.it/@ChristianGeorge/Capstone-Login
+User logs in with username and password -> user is notified if criteria is incorrect -> user can click a link to generate an email to reset password -> once user is logged in, user is directed to homepage
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+HomePage
+https://repl.it/@ChristianGeorge/Capstone-Homepage
+User is able to see nav bar at top, trending movies/tv, and the search section below -> user can click on the trending movies to be directed to posts on that topic -> user can use search feature to search for specific media
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Create Post
+https://repl.it/@ChristianGeorge/CumbersomeNutritiousLinkedlist
+User is able to create a post wiht a chosen title and content -> user can submit that post to be viewed on the homepage and in relation to other topics
 
-### `npm run eject`
+Comment on Post
+https://repl.it/@ChristianGeorge/Capstone-Comment-on-post
+Users are able to comment on the post of other users, or on their own posts
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Screenshots
+Landing/Login Page |
+:-------------------------:|
+![Landing Page](/github-images/login-page.png)  | 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Functionality
+The app's functionality includes:
+Search feature looks for user's number (XXXXX) and possible Rebrickable number (XXXXX-1)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Every User has the ability to create an account that stores information unique to them
+* User can Add Entries, Update Entries, and Delete Entries
+* User can sort entries by: Date & Type (Read, Seen, Performed)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Business Objects (database structure)
+* User (collection)
+    * ID
+    * Email
+    * Password
+    * First name
+    * Last name
+* Player
+    * Team
+    * Player Name
+    * Position
+    * ADP
+    * ADP PPR
+    * Bye Week
+    * Last Season Fantasy Points
+    * Projected Fantasy Points
+* Watchlist
+    * User ID
+    * Player Name
+    * Player Team
+    * Player Position
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Technology
+* Front-End: HTML5, CSS3, JavaScript ES6, jQuery
+* Back-End: Node.js, Express.js, Mocha, Chai, RESTful API Endpoints, MongoDB, Mongoose
+* Development Environment: Heroku, mLab, Robo 3T
 
-### Code Splitting
+## Responsive
+App is built to be usable on mobile devices, as well as responsive across mobile, tablet, laptop, and desktop screen resolutions.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## Development Roadmap
+This is v1.0 of the app, but future enhancements are expected to include:
+* Wishlist (from the inventory page part details);
+        (1) see how many parts there are in the Wishlist
 
-### Analyzing the Bundle Size
+## How to run it
+Use command line to navigate into the project folder and run the following in terminal
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### Local Node scripts
+* To install the node project ===> npm install
+* To migrate the database ===> npm run migrate -- 1
+* To run Node server (on port 8000) ===> npm run dev
+* To run tests ===> npm run test
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# fantasy-data-react-capstone
+### Local React scripts
+* To install the react project ===> npm install
+* To run react (on port 3000) ===> npm start
+* To run tests ===> npm run test

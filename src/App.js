@@ -1,9 +1,10 @@
 import React from 'react';
+import Home from './Home'
 
 function App() {
   return (
     <main className='App'>
-      {/* content goes here */}
+      <Home />
     </main>
   );
 }

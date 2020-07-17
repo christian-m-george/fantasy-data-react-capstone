@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import ValidationError from "../validation-error";
-import TokenService from "../Services/token-services";
-import AuthApiService from "../Services/auth-api-services";
-import "./Login.css";
-import config from '../config'
+import ValidationError from "./validation-error";
+import TokenService from "./Services/token-services";
+import AuthApiService from "./Services/auth-api-services";
+import config from './config'
 // const API_ENDPOINT = "http://localhost:8000";
 
 export default class Login extends Component {

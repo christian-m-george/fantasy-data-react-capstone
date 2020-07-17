@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ValidationError from "../validation-error";
-import AuthApiService from "../Services/auth-api-services";
-import "./Register.css";
+import ValidationError from "./validation-error";
+import AuthApiService from "./Services/auth-api-services";
+// import "./Register.css";
 
 export default class Register extends Component {
   static defaultProps = {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import config from "./config";
+import PlayerDetail from './PlayerDetail'
 // import ValidationError from "../validation-error";
 // import AuthApiService from "../Services/auth-api-services";
 
@@ -105,7 +106,7 @@ export default class Player extends Component {
   }
 
   render() {
-    console.log(this.state.players, "this is the state ");
+    console.log(this.state, "this is the state ");
 
     let showPlayers = "";
 
@@ -121,6 +122,7 @@ export default class Player extends Component {
             <p>Bye Week: {player.ByeWeek}</p>
             <p>Last Season FP: {player.LastSeasonFantasyPoints}</p>
             <p>Projected FP: {player.ProjectedFantasyPoints}</p>
+            <PlayerDetail PlayerID={player.PlayerID}/>
             <form 
             onSubmit={this.handleAddToWatchlist} className="addToWatchlist"
             >

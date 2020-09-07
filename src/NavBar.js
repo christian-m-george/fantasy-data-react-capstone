@@ -9,17 +9,17 @@ export default class Navbar extends Component {
 
   changeNav = () => {
     switch (window.location.pathname) {
-      case "/your-posts":
+      case "/watchlist":
         return "Home";
       case "/":
-        return "Your Posts";
+        return "Watchlist";
     }
   };
 
   changeLogin = () => {
-    if (window.location.pathname == "/login") {
+    if (window.location.pathname === "/login") {
       return;
-    } else if (window.location.pathname == "/register") {
+    } else if (window.location.pathname === "/register") {
       return;
     } else {
       return "Logout";
@@ -31,8 +31,8 @@ export default class Navbar extends Component {
     let logLink = this.changeLogin();
 
     this.changeAnchor = () => {
-      if (window.location.pathname == "/") {
-        return <a href="/your-posts">{navLink}</a>;
+      if (window.location.pathname === "/") {
+        return <a href="/watchlist">{navLink}</a>;
       } else {
         return <a href="/">{navLink}</a>;
       }

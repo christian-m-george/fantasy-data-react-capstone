@@ -14,7 +14,7 @@ export default class Player extends Component {
 
   componentDidMount() {
     console.log(config.API_ENDPOINT, "this is the endpoint");
-    const searchURL = `${config.API_ENDPOINT}/api/player-data/player/all`;
+    const searchURL = `${config.API_ENDPOINT}/player-data/player/all`;
 
     const options = {
       method: "GET",
@@ -87,7 +87,7 @@ export default class Player extends Component {
 
     console.log(data, 'this is the data from event target')
 
-    fetch(`${config.API_ENDPOINT}/api/watchlist/watchlist/1`, {
+    fetch(`${config.API_ENDPOINT}/watchlist/watchlist/1`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

@@ -4,7 +4,7 @@ const AuthApiService = {
     postLogin(credentials) {
         console.log(credentials, 'these are the credentials')
 
-        return fetch(`${config.API_ENDPOINT}/auth/login`, {
+        return fetch(`${config.API_ENDPOINT}/auth/auth/login`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -14,7 +14,7 @@ const AuthApiService = {
         })
         .then(res => {
             console.log(res.status)
-            if (res.status != 200) {
+            if (res.status !== 200) {
                 alert('Invalid login details')
             }
             else {
@@ -31,7 +31,7 @@ const AuthApiService = {
     },
     postUser(user) {
         // console.log(`${API_ENDPOINT}/user`)
-        return fetch(`${config.API_ENDPOINT}/user`, {
+        return fetch(`${config.API_ENDPOINT}/user/user`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -40,10 +40,10 @@ const AuthApiService = {
         })
             .then(res => {
                 console.log(res.error)
-                if (res.status == 400) {
+                if (res.status === 400) {
                     alert('username or email is already taken')
                 }
-                else if (res.status != 201) {
+                else if (res.status !== 201) {
                     alert('could not create user')
                 }
                 else {

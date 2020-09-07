@@ -25,7 +25,7 @@ export default class PlayerDetails extends Component {
     console.log(data, 'this is the data from event target')
 
     console.log(config.API_ENDPOINT, "this is the endpoint");
-    const searchURL = `${config.API_ENDPOINT}/api/player-detail/player/details/season/${data.PlayerID}`;
+    const searchURL = `${config.API_ENDPOINT}/player-detail/player/details/season/${data.PlayerID}`;
 
     const options = {
       method: "GET",
@@ -95,12 +95,12 @@ export default class PlayerDetails extends Component {
               ReceivingTouchdowns: playerDetails.ReceivingTouchdowns,
               ReceivingYards: playerDetails.ReceivingYards,
               ReceivingYardsPerReception: playerDetails.ReceivingYardsPerReception,
-              ReceivingYardsPerTarget: playerDetails, ReceivingYardsPerTarget,
+              ReceivingYardsPerTarget: playerDetails.ReceivingYardsPerTarget,
               ReceptionPercentage: playerDetails.ReceptionPercentage,
               Receptions: playerDetails.Receptions,
               RushingAttempts: playerDetails.RushingAttempts,
               RushingLong: playerDetails.RushingLong,
-              RushingTouchdowns: playerDetails, RushingTouchdowns,
+              RushingTouchdowns: playerDetails.RushingTouchdowns,
               RushingYards: playerDetails.RushingYards,
               RushingYardsPerAttempt: playerDetails.RushingYardsPerAttempt,
               // ScoringDetails: [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
@@ -129,12 +129,12 @@ export default class PlayerDetails extends Component {
               ReceivingTouchdowns: playerDetails.ReceivingTouchdowns,
               ReceivingYards: playerDetails.ReceivingYards,
               ReceivingYardsPerReception: playerDetails.ReceivingYardsPerReception,
-              ReceivingYardsPerTarget: playerDetails, ReceivingYardsPerTarget,
+              ReceivingYardsPerTarget: playerDetails.ReceivingYardsPerTarget,
               ReceptionPercentage: playerDetails.ReceptionPercentage,
               Receptions: playerDetails.Receptions,
               RushingAttempts: playerDetails.RushingAttempts,
               RushingLong: playerDetails.RushingLong,
-              RushingTouchdowns: playerDetails, RushingTouchdowns,
+              RushingTouchdowns: playerDetails.RushingTouchdowns,
               RushingYards: playerDetails.RushingYards,
               RushingYardsPerAttempt: playerDetails.RushingYardsPerAttempt,
               // ScoringDetails: [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
@@ -168,7 +168,7 @@ export default class PlayerDetails extends Component {
               Receptions: playerDetails.Receptions,
               RushingAttempts: playerDetails.RushingAttempts,
               RushingLong: playerDetails.RushingLong,
-              RushingTouchdowns: playerDetails, RushingTouchdowns,
+              RushingTouchdowns: playerDetails.RushingTouchdowns,
               RushingYards: playerDetails.RushingYards,
               RushingYardsPerAttempt: playerDetails.RushingYardsPerAttempt,
               // ScoringDetails: [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]

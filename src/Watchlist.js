@@ -15,7 +15,7 @@ export default class Watchlist extends Component {
 
   componentDidMount() {
     console.log(config.API_ENDPOINT, "this is the endpoint");
-    const searchURL = `${config.API_ENDPOINT}/watchlist/watchlist/1`;
+    const searchURL = `${config.API_ENDPOINT}/watchlist/watchlist/${window.localStorage.user_id}`;
 
     const options = {
       method: "GET",
@@ -89,7 +89,7 @@ export default class Watchlist extends Component {
 
     console.log(data, 'this is the data from event target')
 
-    fetch(`${config.API_ENDPOINT}/api/watchlist/watchlist/1`, {
+    fetch(`${config.API_ENDPOINT}/watchlist/watchlist/1`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

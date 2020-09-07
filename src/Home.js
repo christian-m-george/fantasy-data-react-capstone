@@ -12,7 +12,7 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <nav>Nav</nav>
+        {/* <nav></nav> */}
         <h1>Fantasy Data</h1>
         <section className="main">
           <h3>Top Fantasy Players</h3>

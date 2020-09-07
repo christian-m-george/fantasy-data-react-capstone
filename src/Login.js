@@ -31,7 +31,7 @@ export default class Login extends Component {
 
   redirectOnSetUser() {
     console.log('function running')
-    if (localStorage.getItem('username') != undefined) {
+    if (localStorage.getItem('username') !== undefined) {
       window.location.href = '/'
     }
   }
@@ -56,7 +56,7 @@ export default class Login extends Component {
         console.log(data, "this is the data from auth");
         this.props.setUserId(data.userId);
         localStorage.setItem("user_id", data.userId);
-        fetch(`${config.API_ENDPOINT}/user/id/${data.userId}`, {
+        fetch(`${config.API_ENDPOINT}/user/user/id/${data.userId}`, {
           method: "get",
           headers: {
             "content-type": "application/json",

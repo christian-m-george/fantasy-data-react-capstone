@@ -45,8 +45,18 @@ class App extends Component {
                   />
                 )}
               />
-              <Route path="/home" component={Home} />
-              <Route path="/watchlist" component={Watchlist} />
+              <Route
+                path="/register"
+                component={Register}
+              />
+              <Route 
+                path="/home" 
+                component={Home} 
+              />
+              <Route 
+                path="/watchlist" 
+                component={Watchlist} 
+              />
             </Switch>
           </main>
         </Router>

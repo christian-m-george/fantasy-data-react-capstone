@@ -1,6 +1,6 @@
 # Movie Forum Capstone
 
-Fantasy Data capstone allows users to research players for the upcoming fantasy football season, compare relevant statistics and add them to a watchlist.
+FantasyData allows users to access a large database of fantasy football statistics on players on their team or for research on hopeful draft picks! The data is historical and current, and gives a macro level view of a player's performance in seasons past along with some statistics forecasting future performance. Use this to get a leg up on your league mates!
 
 ## Working Prototype
 You can access a working prototype of the node app here: https://movie-forum-capstone-server.herokuapp.com/ 
@@ -8,7 +8,7 @@ You can access a working prototype of the node app here: https://movie-forum-cap
 You can access a working prototype of the react app here:
 
 ## User Stories
-This app is for two types of users; a visitor, and a logged-in user
+This app is for logged-in users
 
 #### Landing Page
 * as a visitor
@@ -49,14 +49,18 @@ Users are able to comment on the post of other users, or on their own posts
 Landing/Login Page |
 :-------------------------:|
 ![Landing Page](/github-images/login-page.png)  | 
+![Landing Page](/github-images/login-page.png)  | 
+![Landing Page](/github-images/login-page.png)  | 
+![Landing Page](/github-images/login-page.png)  | 
+![Landing Page](/github-images/login-page.png)  | 
+![Landing Page](/github-images/login-page.png)  | 
 
 ## Functionality
 The app's functionality includes:
-Search feature looks for user's number (XXXXX) and possible Rebrickable number (XXXXX-1)
 
 * Every User has the ability to create an account that stores information unique to them
-* User can Add Entries, Update Entries, and Delete Entries
-* User can sort entries by: Date & Type (Read, Seen, Performed)
+* User can research players by ADP, Fantasy Points, Yards by Ground, etc..
+* User can add players to Watchlist
 
 ## Business Objects (database structure)
 * User (collection)

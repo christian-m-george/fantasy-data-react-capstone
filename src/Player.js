@@ -87,7 +87,7 @@ export default class Player extends Component {
 
     console.log(data, 'this is the data from event target')
 
-    fetch(`${config.API_ENDPOINT}/watchlist/watchlist/1`, {
+    fetch(`${config.API_ENDPOINT}/watchlist/`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -127,7 +127,7 @@ export default class Player extends Component {
             onSubmit={this.handleAddToWatchlist} className="addToWatchlist"
             >
               <input type="hidden" name='playerId' defaultValue={player.PlayerID}></input> 
-              <input type="hidden" name='userId' defaultValue={1}></input> 
+              <input type="hidden" name='userId' defaultValue={3}></input> 
               <button type="submit" className="addToWatchlist">Add to watchlist</button>
             </form>
           </div>

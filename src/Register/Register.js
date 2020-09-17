@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ValidationError from "./validation-error";
-import AuthApiService from "./Services/auth-api-services";
-// import "./Register.css";
+import ValidationError from "../validation-error";
+import AuthApiService from "../Services/auth-api-services";
+import "./Register.css";
 
 export default class Register extends Component {
   static defaultProps = {
@@ -156,8 +156,8 @@ export default class Register extends Component {
   render() {
     return (
       <div className="register-page form-container sign-in-container container" id="container">
+        <h2 className='signup-header'>Sign up</h2>
         <form className="signup-form " onSubmit={this.handleSubmitBasicAuth}>
-          <h2>Sign up</h2>
           <div className="signup-form-entry">
             <label htmlFor="username">Username</label>
             <input
@@ -213,6 +213,9 @@ export default class Register extends Component {
           <div className='sign-up-button-wrapper'>
           <button type="submit">Sign up</button>
           </div>
+          <div className="login-link-wrapper">
+              <a id='login-link' href='/login'>Already have an account? Login here</a>
+            </div>
         </form>
       </div>
     );

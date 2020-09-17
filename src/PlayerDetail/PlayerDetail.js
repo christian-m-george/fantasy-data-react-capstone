@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import config from "./config";
+import config from "../config";
 // import ValidationError from "../validation-error";
 // import AuthApiService from "../Services/auth-api-services";
 
@@ -206,7 +206,6 @@ export default class PlayerDetails extends Component {
               PuntYards: playerDetails.PuntYards,
               Punts: playerDetails.Punts,
               PuntsHadBlocked: playerDetails.PuntsHadBlocked,
-              // ScoringDetails: (19)[{ … }, { … }, { … }, { … }, { … }, { … }, { … }, { … }, { … }, { … }, { … }, { … }, { … }, { … }, { … }, { … }, { … }, { … }, { … }]
             }
             break;
           default:
@@ -248,7 +247,7 @@ export default class PlayerDetails extends Component {
         );
       });
     }
-    return <div>
+    return <div className='player-detail-container'>
       <form onSubmit={this.handleShowPlayerDetails} >
         <input type="hidden" name='PlayerID' defaultValue={this.props.PlayerID}></input>
         <input type="hidden" name='userId' defaultValue={1}></input>

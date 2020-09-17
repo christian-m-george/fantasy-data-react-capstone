@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import config from "./config";
-import PlayerDetail from './PlayerDetail'
+import config from "../config";
+import PlayerDetail from '../PlayerDetail/PlayerDetail';
+import './Player.css'
 // import ValidationError from "../validation-error";
 // import AuthApiService from "../Services/auth-api-services";
 
@@ -13,8 +14,8 @@ export default class Player extends Component {
   }
 
   componentDidMount() {
-    console.log(config.API_ENDPOINT, "this is the endpoint");
-    const searchURL = `${config.API_ENDPOINT}/player-data/player/all`;
+    // console.log(config.API_ENDPOINT, "this is the endpoint");
+    const searchURL = `${config.API_ENDPOINT}/player-data/player/players`;
 
     const options = {
       method: "GET",
@@ -37,29 +38,31 @@ export default class Player extends Component {
 
         const players = data.map((player) => {
           const {
-            AverageDraftPosition,
-            AverageDraftPositionPPR,
-            ByeWeek,
-            LastSeasonFantasyPoints,
-            Name,
-            PlayerID,
-            Position,
-            ProjectedFantasyPoints,
-            Team,
+            average_draft_position,
+            average_draft_position_ppr,
+            bye_week,
+            last_season_fantasy_points,
+            player_name,
+            player_id,
+            position,
+            projected_fantasy_points,
+            team,
           } = player;
 
           return {
-            AverageDraftPosition: AverageDraftPosition,
-            AverageDraftPositionPPR: AverageDraftPositionPPR,
-            ByeWeek: ByeWeek,
-            LastSeasonFantasyPoints: LastSeasonFantasyPoints,
-            Name: Name,
-            PlayerID: PlayerID,
-            Position: Position,
-            ProjectedFantasyPoints: ProjectedFantasyPoints,
-            Team: Team,
+            AverageDraftPosition: average_draft_position,
+            AverageDraftPositionPPR: average_draft_position_ppr,
+            ByeWeek: bye_week,
+            LastSeasonFantasyPoints: last_season_fantasy_points,
+            Name: player_name,
+            PlayerID: player_id,
+            Position: position,
+            ProjectedFantasyPoints: projected_fantasy_points,
+            Team: team,
           };
         });
+        console.log(players, 'this is players log')
+
 
         this.setState({
           players: players,
@@ -113,23 +116,25 @@ export default class Player extends Component {
     if (this.state.players.length !== 0) {
       showPlayers = this.state.players.map((player, key) => {
         return (
-          <div className="list" key={key}>
-            <h3>{player.Name}</h3>
-            <p>Team: {player.Team}</p>
-            <p>Posiiton: {player.Position}</p>
-            <p>ADP: {player.AverageDraftPosition}</p>
-            <p>ADP PPR: {player.AverageDraftPositionPPR}</p>
-            <p>Bye Week: {player.ByeWeek}</p>
-            <p>Last Season FP: {player.LastSeasonFantasyPoints}</p>
-            <p>Projected FP: {player.ProjectedFantasyPoints}</p>
-            <PlayerDetail PlayerID={player.PlayerID}/>
+          <div className="list player-card" key={key}>
+            <p className='player-title player-stat'>{player.Name}, {player.Team}</p>
+            {/* <p className='player-stat'>Team: {player.Team}</p> */}
+            <p className='player-stat'>Posiiton: {player.Position}</p>
+            <p className='player-stat'>ADP: {player.AverageDraftPosition}</p>
+            <p className='player-stat'>ADP PPR: {player.AverageDraftPositionPPR}</p>
+            <p className='player-stat'>Bye Week: {player.ByeWeek}</p>
+            <p className='player-stat'>Last Season FP: {player.LastSeasonFantasyPoints}</p>
+            <p className='player-stat'>Projected FP: {player.ProjectedFantasyPoints}</p>
+            <div className='button-wrapper'>
+            {/* <PlayerDetail PlayerID={player.PlayerID}/> */}
             <form 
             onSubmit={this.handleAddToWatchlist} className="addToWatchlist"
             >
               <input type="hidden" name='playerId' defaultValue={player.PlayerID}></input> 
-              <input type="hidden" name='userId' defaultValue={3}></input> 
+              <input type="hidden" name='userId' defaultValue={window.localStorage.getItem("user_id")}></input> 
               <button type="submit" className="addToWatchlist">Add to watchlist</button>
             </form>
+            </div>
           </div>
         );
       });

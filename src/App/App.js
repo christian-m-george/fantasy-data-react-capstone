@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Link from "react-router-dom";
 import Redirect from "react-router-dom";
-import NavBar from "./NavBar";
-import Login from "./Login";
-import Register from "./Register";
-import Home from './Home';
-import Watchlist from './Watchlist';
-import config from "./config";
+import NavBar from "../NavBar/NavBar";
+import Login from "../Login/Login";
+import Register from "../Register/Register";
+import Home from '../Home/Home';
+import Watchlist from '../Watchlist/Watchlist';
+import config from "../config";
 // import "./App.css";
 
 class App extends Component {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import config from './config';
+import config from '../config';
+import './Watchlist.css'
 
 export default class Watchlist extends Component {
 
@@ -13,8 +14,8 @@ export default class Watchlist extends Component {
   }
 
   componentDidMount() {
-    console.log(config.API_ENDPOINT, "this is the endpoint");
-    const searchURL = `${config.API_ENDPOINT}/watchlist/${window.localStorage.user_id}`;
+    // console.log(config.API_ENDPOINT, "this is the endpoint");
+    const searchURL = `${config.API_ENDPOINT}/watchlist/${window.localStorage.getItem("user_id")}`;
 
     const options = {
       method: "GET",
@@ -32,18 +33,18 @@ export default class Watchlist extends Component {
       })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.totalItems === 0) throw new Error("No players found");
 
         const showPlayerDetails = data.map((onePlayerId) => {
-          console.log(onePlayerId.player_id)
+          // console.log(onePlayerId.player_id)
           return this.renderWatchlistPlayers(onePlayerId.player_id)
         })
 
         this.setState({
           showPlayerDetails: showPlayerDetails,
         });
-        console.log(this.state)
+        // console.log(this.state)
       })
       .catch((err) => {
         this.setState({
@@ -53,7 +54,7 @@ export default class Watchlist extends Component {
   }
 
   handleAddToWatchlist = (ev) => {
-    console.log('event triggered');
+    // console.log('event triggered');
     ev.preventDefault();
 
     const data = {}
@@ -64,7 +65,7 @@ export default class Watchlist extends Component {
       data[value[0]] = value[1]
     }
 
-    console.log(data, 'this is the data from event target')
+    // console.log(data, 'this is the data from event target')
 
     fetch(`${config.API_ENDPOINT}/watchlist/watchlist/${window.localStorage.user_id}`, {
       method: 'POST',
@@ -85,7 +86,7 @@ export default class Watchlist extends Component {
 
   renderWatchlistPlayers(playerId) {
     const searchURL = `${config.API_ENDPOINT}/player-detail/player/details/season/${playerId}`;
-    console.log(searchURL, "this is the endpoint");
+    // console.log(searchURL, "this is the endpoint");
 
     const options = {
       method: "GET",
@@ -104,45 +105,16 @@ export default class Watchlist extends Component {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         output.push(data)
         if (data.totalItems === 0) throw new Error("No players found");
-
-        // const players = data.map((player) => {
-        //   console.log(player)
-        //   const {
-        //     AverageDraftPosition,
-        //     AverageDraftPositionPPR,
-        //     ByeWeek,
-        //     LastSeasonFantasyPoints,
-        //     Name,
-        //     PlayerID,
-        //     Position,
-        //     ProjectedFantasyPoints,
-        //     Team
-        //   } = player;
-
-        // let htmlOutput = `<div>
-        // <span>AverageDraftPosition: ${AverageDraftPosition}</span>
-        // <span> AverageDraftPositionPPR: ${AverageDraftPositionPPR}</span>
-        // <span> ByeWeek: ${ByeWeek}</span>
-        // <span> LastSeasonFantasyPoints: ${LastSeasonFantasyPoints}</span>
-        // <span>Name: ${Name}</span>
-        // <span>PlayerID: ${PlayerID}</span>
-        // <span>Position: ${Position}</span>
-        // <span>ProjectedFantasyPoints: ${ProjectedFantasyPoints}</span>
-        // <span>Team: ${Team}</span>
-        // </div>`;
-
-        //   return htmlOutput
-        // });
         let existingPlayers = this.state.showPlayerDetails
         existingPlayers.push(data[0])
         this.setState({
           showPlayerDetails: existingPlayers,
           error: null,
         });
-        console.log(this.state.showPlayerDetails)
+        // console.log(this.state.showPlayerDetails)
       })
       .catch((err) => {
         this.setState({
@@ -151,31 +123,80 @@ export default class Watchlist extends Component {
       });
   }
 
+  handleRemoveFromWatchlist = (ev) => {
+    console.log('event triggered');
+    ev.preventDefault();
+
+    const data = {}
+
+    const formData = new FormData(ev.target)
+
+    for (let value of formData) {
+        data[value[0]] = value[1]
+    }
+
+    console.log(data, 'this is the data from event target')
+
+    fetch(`${config.API_ENDPOINT}/watchlist/${window.localStorage.getItem("user_id")}/${data.playerId}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+      },
+      // body: JSON.stringify(data)
+    })
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      this.setState({
+        error: err.message,
+      });
+    });
+
+  }
+
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     // let displayPlayerDetails = '';
     // if (this.state.showPlayerDetails.length != 0) {
-      let displayPlayerDetails = this.state.showPlayerDetails.map((onePlayerDetail) => {
-        console.log(onePlayerDetail)
-        if (onePlayerDetail != undefined) {
-          return( <div key={onePlayerDetail.PlayerID}>
-            <span>AverageDraftPosition: {onePlayerDetail.AverageDraftPosition}</span>
-            <span>AverageDraftPositionPPR: {onePlayerDetail.AverageDraftPositionPPR}</span>
-            <span>ByeWeek: {onePlayerDetail.ByeWeek}</span>
-            <span>LastSeasonFantasyPoints: {onePlayerDetail.LastSeasonFantasyPoints}</span>
-            <span>Name: {onePlayerDetail.Name}</span>
-            <span>PlayerID: {onePlayerDetail.PlayerID}</span>
-            <span>Position: {onePlayerDetail.Position}</span>
-            <span>ProjectedFantasyPoints: {onePlayerDetail.ProjectedFantasyPoints}</span>
-            <span>Team: {onePlayerDetail.Team}</span>
-            </div>)
-        }
-      })
+    let displayPlayerDetails = this.state.showPlayerDetails.map((onePlayerDetail) => {
+      console.log(onePlayerDetail)
+      if (onePlayerDetail != undefined) {
+
+        
+
+
+        return (<div className='player-card' key={onePlayerDetail.PlayerID}>
+
+          <div className='player-title player-stat'>{onePlayerDetail.Name}, {onePlayerDetail.Team}</div>
+          <div className='player-stat'>AverageDraftPosition: {onePlayerDetail.AverageDraftPosition}</div>
+          <div className='player-stat'>AverageDraftPositionPPR: {onePlayerDetail.AverageDraftPositionPPR}</div>
+          <div className='player-stat'>ByeWeek: {onePlayerDetail.ByeWeek}</div>
+          <div className='player-stat'>LastSeasonFantasyPoints: {onePlayerDetail.LastSeasonFantasyPoints}</div>
+          {/* <div className='player-stat'>PlayerID: {onePlayerDetail.PlayerID}</div> */}
+          <div className='player-stat'>Position: {onePlayerDetail.Position}</div>
+          <div className='player-stat'>ProjectedFantasyPoints: {onePlayerDetail.ProjectedFantasyPoints}</div>
+          <div className='button-wrapper'>
+            <form
+              onSubmit={this.handleRemoveFromWatchlist}
+              className="removeFromWatchlist"
+            >
+              <input type="hidden" name='playerId' defaultValue={onePlayerDetail.PlayerID}></input>
+              <input type="hidden" name='userId' defaultValue={window.localStorage.getItem("user_id")}></input>
+              <button type="submit" className="removeFromWatchlist">Remove from watchlist</button>
+            </form>
+          </div>
+
+        </div>)
+      }
+    })
     // }
 
     return (
       <div>
-        <p>hello</p>
+        <div className='watchlist-header-wrapper'>
+          <h2>Your Watchlist</h2>
+        </div>
         {displayPlayerDetails}
         {/* <nav>Nav</nav>
         <h1>Fantasy Data</h1>

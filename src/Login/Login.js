@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import ValidationError from "./validation-error";
-import TokenService from "./Services/token-services";
-import AuthApiService from "./Services/auth-api-services";
-import config from './config'
+import ValidationError from "../validation-error";
+import TokenService from "../Services/token-services";
+import AuthApiService from "../Services/auth-api-services";
+import config from '../config'
+import './Login.css'
 // const API_ENDPOINT = "http://localhost:8000";
 
 export default class Login extends Component {
@@ -25,12 +26,8 @@ export default class Login extends Component {
     };
   }
 
-  // handleLoginSuccess = () => {
-  //   window.location = "/";
-  // };
-
   redirectOnSetUser() {
-    console.log('function running')
+    // console.log('function running')
     if (localStorage.getItem('username') !== undefined) {
       window.location.href = '/'
     }
@@ -53,7 +50,7 @@ export default class Login extends Component {
       password: password.value,
     })
       .then((data) => {
-        console.log(data, "this is the data from auth");
+        // console.log(data, "this is the data from auth");
         this.props.setUserId(data.userId);
         localStorage.setItem("user_id", data.userId);
         fetch(`${config.API_ENDPOINT}/user/user/id/${data.userId}`, {
@@ -63,10 +60,10 @@ export default class Login extends Component {
           },
         })
           .then((res) => res.json())
-          .then((data) =>  {
-            console.log(data, 'this is the data')
-          localStorage.setItem('username', data.username)
-          this.redirectOnSetUser()
+          .then((data) => {
+            // console.log(data, 'this is the data')
+            localStorage.setItem('username', data.username)
+            this.redirectOnSetUser()
           })
 
           // .then((data) => localStorage.setItem("username", data.username))
@@ -76,7 +73,7 @@ export default class Login extends Component {
         password.value = "";
         TokenService.saveAuthToken(data.authToken);
         TokenService.saveUserId(data.userId);
-        
+
       })
       .catch((res) => {
         this.setState({ error: res.error });
@@ -85,7 +82,7 @@ export default class Login extends Component {
 
   };
 
-  formError = () => {};
+  formError = () => { };
 
   validateEmail() {
     const email = this.state.email.value.trim();
@@ -118,47 +115,50 @@ export default class Login extends Component {
   render() {
     return (
       <div className="container" id="container">
-          <div className="form-container sign-in-container">
-        <h2>Log in</h2>
-        <form className="login-form" onSubmit={this.handleSubmitJwtAuth}>
-          <div className="login-form-entry">
-            <label htmlFor="email">Email</label>
-            <input
-              className="login-control"
-              type="text"
-              name="email"
-              id="email"
-              onChange={(e) => this.updateEmail(e.target.value)}
-            />
-            {this.state.email.touched && (
-              <ValidationError message={this.validateEmail()} />
-            )}
+        
+        <div className="form-container sign-in-container">
+          <form className="login-form" onSubmit={this.handleSubmitJwtAuth}>
+          <div className='login-header-wrapper'>
+          <h1 className='login-header'>Log In</h1>
           </div>
-          <div className="login-form-entry">
-            <label htmlFor="password">Password</label>
-            <input
-              className="login-control"
-              type="password"
-              name="password"
-              id="password"
-              onChange={(e) => this.updatePassword(e.target.value)}
-            />
-            {this.state.password.touched && (
-              <ValidationError message={this.validatePassword()} />
-            )}
-          </div>
-          <button type="submit">Log in</button>
-          <div className="registration-link-wrapper">
+            <div className="login-form-entry">
+              <label htmlFor="email">Email</label>
+              <input
+                className="login-control"
+                type="text"
+                name="email"
+                id="email"
+                onChange={(e) => this.updateEmail(e.target.value)}
+              />
+              {this.state.email.touched && (
+                <ValidationError message={this.validateEmail()} />
+              )}
+            </div>
+            <div className="login-form-entry">
+              <label htmlFor="password">Password</label>
+              <input
+                className="login-control"
+                type="password"
+                name="password"
+                id="password"
+                onChange={(e) => this.updatePassword(e.target.value)}
+              />
+              {this.state.password.touched && (
+                <ValidationError message={this.validatePassword()} />
+              )}
+            </div>
+            <button className='btn' type="submit">Log in</button>
+            <div className="registration-link-wrapper">
               <a id='register-link' href='/register'>Don't have an account? Register here</a>
-          </div>
-          
-          <div className="error-message">{this.state.error}</div>
-          {/* <div className='demo-info'>
+            </div>
+
+            <div className="error-message">{this.state.error}</div>
+            {/* <div className='demo-info'>
                         <p className='login-form-p'><b>To view a demo use:</b></p>
                         <p className='login-form-p'><b>Email:</b> artlover3000@test.com</p>
                         <p className='login-form-p'><b>Password:</b> password1</p>
                     </div> */}
-        </form>
+          </form>
         </div>
       </div>
     );

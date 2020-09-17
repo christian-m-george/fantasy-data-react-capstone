@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import API_ENDPOINT from "./config";
-import Player from "./Player";
+import Player from "../Player/Player";
+import './Home.css'
 
 export default class Home extends Component {
   constructor(props) {
@@ -11,9 +11,9 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div>
+      <div className='home'>
         {/* <nav></nav> */}
-        <h1>Fantasy Data</h1>
+        <h1 className='home-header'>Fantasy Data</h1>
         <section className="main">
           <h3>Top Fantasy Players</h3>
         </section>

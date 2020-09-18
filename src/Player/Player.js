@@ -107,6 +107,7 @@ export default class Player extends Component {
         error: err.message,
       });
     });
+    window.location = '/'
   }
 
 

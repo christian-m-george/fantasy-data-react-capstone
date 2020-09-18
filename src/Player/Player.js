@@ -210,12 +210,10 @@ export default class Player extends Component {
           <p className='player-stat'>Projected FP: {player.ProjectedFantasyPoints}</p>
           <div className='button-wrapper'>
           {/* <PlayerDetail PlayerID={player.PlayerID}/> */}
-          <form 
-          onSubmit={this.handleAddToWatchlist} className="addToWatchlist"
-          >
-            <input type="hidden" name='playerId' defaultValue={player.PlayerID}></input> 
-            <input type="hidden" name='userId' defaultValue={window.localStorage.getItem("user_id")}></input> 
-            <button type="submit" className="addToWatchlist">Added</button>
+          <form>
+            {/* <input type="hidden" name='playerId' defaultValue={player.PlayerID}></input> 
+            <input type="hidden" name='userId' defaultValue={window.localStorage.getItem("user_id")}></input>  */}
+            <div type="submit" className="addToWatchlist">Added</div>
           </form>
           </div>
         </div>

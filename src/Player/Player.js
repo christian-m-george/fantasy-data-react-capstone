@@ -10,11 +10,13 @@ export default class Player extends Component {
     super(props);
     this.state = {
       players: [],
+      watchlistPlayers: []
     };
   }
 
   componentDidMount() {
     // console.log(config.API_ENDPOINT, "this is the endpoint");
+    this.checkWatchlist()
     const searchURL = `${config.API_ENDPOINT}/player-data/player/players`;
 
     const options = {
@@ -105,8 +107,61 @@ export default class Player extends Component {
         error: err.message,
       });
     });
-
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  checkWatchlist() {
+    // console.log(config.API_ENDPOINT, "this is the endpoint");
+    const searchURL = `${config.API_ENDPOINT}/watchlist/${window.localStorage.getItem("user_id")}`;
+
+    const options = {
+      method: "GET",
+      header: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    fetch(searchURL, options)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Something went wrong, please try again later.");
+        }
+        return res;
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        if (data.totalItems === 0) throw new Error("No players found");
+
+        let watchlistArray = data.map(data => {
+          return data.player_id
+        })
+
+        this.setState({
+          watchlistPlayers: watchlistArray,
+        });
+        console.log(this.state)
+      })
+      .catch((err) => {
+        this.setState({
+          error: err.message,
+        });
+      });
+  }
+
+
+
 
   render() {
     console.log(this.state, "this is the state ");
@@ -115,28 +170,56 @@ export default class Player extends Component {
 
     if (this.state.players.length !== 0) {
       showPlayers = this.state.players.map((player, key) => {
-        return (
-          <div className="list player-card" key={key}>
-            <p className='player-title player-stat'>{player.Name}, {player.Team}</p>
-            {/* <p className='player-stat'>Team: {player.Team}</p> */}
-            <p className='player-stat'>Posiiton: {player.Position}</p>
-            <p className='player-stat'>ADP: {player.AverageDraftPosition}</p>
-            <p className='player-stat'>ADP PPR: {player.AverageDraftPositionPPR}</p>
-            <p className='player-stat'>Bye Week: {player.ByeWeek}</p>
-            <p className='player-stat'>Last Season FP: {player.LastSeasonFantasyPoints}</p>
-            <p className='player-stat'>Projected FP: {player.ProjectedFantasyPoints}</p>
-            <div className='button-wrapper'>
-            {/* <PlayerDetail PlayerID={player.PlayerID}/> */}
-            <form 
-            onSubmit={this.handleAddToWatchlist} className="addToWatchlist"
-            >
-              <input type="hidden" name='playerId' defaultValue={player.PlayerID}></input> 
-              <input type="hidden" name='userId' defaultValue={window.localStorage.getItem("user_id")}></input> 
-              <button type="submit" className="addToWatchlist">Add to watchlist</button>
-            </form>
+        let watchlistPlayerArray = this.state.watchlistPlayers
+        console.log(watchlistPlayerArray, 'this is watchlist player array')
+        if (!watchlistPlayerArray.includes(player.PlayerID)) {
+          return (
+            <div className="list player-card" key={key} id={key}>
+              <p className='player-title player-stat'>{player.Name}, {player.Team}</p>
+              {/* <p className='player-stat'>Team: {player.Team}</p> */}
+              <p className='player-stat'>Position: {player.Position}</p>
+              <p className='player-stat'>ADP: {player.AverageDraftPosition}</p>
+              <p className='player-stat'>ADP PPR: {player.AverageDraftPositionPPR}</p>
+              <p className='player-stat'>Bye Week: {player.ByeWeek}</p>
+              <p className='player-stat'>Last Season FP: {player.LastSeasonFantasyPoints}</p>
+              <p className='player-stat'>Projected FP: {player.ProjectedFantasyPoints}</p>
+              <div className='button-wrapper'>
+              {/* <PlayerDetail PlayerID={player.PlayerID}/> */}
+              <form 
+              onSubmit={this.handleAddToWatchlist} className="addToWatchlist"
+              >
+                <input type="hidden" name='playerId' defaultValue={player.PlayerID}></input> 
+                <input type="hidden" name='userId' defaultValue={window.localStorage.getItem("user_id")}></input> 
+                <button type="submit" className="addToWatchlist">Add to watchlist</button>
+              </form>
+              </div>
             </div>
+          );
+        }
+        else {
+          return (
+          <div className="list player-card" key={key} id={key}>
+          <p className='player-title player-stat'>{player.Name}, {player.Team}</p>
+          {/* <p className='player-stat'>Team: {player.Team}</p> */}
+          <p className='player-stat'>Position: {player.Position}</p>
+          <p className='player-stat'>ADP: {player.AverageDraftPosition}</p>
+          <p className='player-stat'>ADP PPR: {player.AverageDraftPositionPPR}</p>
+          <p className='player-stat'>Bye Week: {player.ByeWeek}</p>
+          <p className='player-stat'>Last Season FP: {player.LastSeasonFantasyPoints}</p>
+          <p className='player-stat'>Projected FP: {player.ProjectedFantasyPoints}</p>
+          <div className='button-wrapper'>
+          {/* <PlayerDetail PlayerID={player.PlayerID}/> */}
+          <form 
+          onSubmit={this.handleAddToWatchlist} className="addToWatchlist"
+          >
+            <input type="hidden" name='playerId' defaultValue={player.PlayerID}></input> 
+            <input type="hidden" name='userId' defaultValue={window.localStorage.getItem("user_id")}></input> 
+            <button type="submit" className="addToWatchlist">Added</button>
+          </form>
           </div>
-        );
+        </div>
+          )
+        }
       });
     }
     return <div>{showPlayers}</div>;

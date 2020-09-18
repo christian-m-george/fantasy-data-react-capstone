@@ -17,7 +17,7 @@ export default class Home extends Component {
         <section className="main">
           <h3>Top Fantasy Players</h3>
         </section>
-        <section><Player /></section>
+        <section className='player-list-wrapper'><Player /></section>
       </div>
     );
   }

@@ -8,7 +8,7 @@ import Register from "../Register/Register";
 import Home from '../Home/Home';
 import Watchlist from '../Watchlist/Watchlist';
 import config from "../config";
-// import "./App.css";
+import "./App.css";
 
 class App extends Component {
   state = {
@@ -74,6 +74,7 @@ class App extends Component {
             target="_blank"
           >
             <i className="fa fa-github"></i>
+            
           </a>
           <a
             href="https://christian-m-george.github.io/portfolio/"

@@ -115,6 +115,10 @@ export default class Login extends Component {
   render() {
     return (
       <div className="container" id="container">
+        <div className='nav-header-wrapper'>
+          <h1 className='nav-header-title'>FantasyData</h1>
+          <p className='nav-header-text'>keep tabs on the fantasy players you like</p>
+        </div>
         
         <div className="form-container sign-in-container">
           <form className="login-form" onSubmit={this.handleSubmitJwtAuth}>
@@ -151,7 +155,9 @@ export default class Login extends Component {
                 <div>username: testuser10@gmail.com</div>
                 <div>password: password1</div>
             </div>
-            <button className='btn' type="submit">Log in</button>
+            <div className='login-button-wrapper'>
+            <button className='login-button' type="submit">Log in</button>
+            </div>
             <div className="registration-link-wrapper">
               <a id='register-link' href='/register'>Don't have an account? Register here</a>
             </div>

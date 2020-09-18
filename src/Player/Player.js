@@ -176,7 +176,7 @@ export default class Player extends Component {
         if (!watchlistPlayerArray.includes(player.PlayerID)) {
           return (
             <div className="list player-card" key={key} id={key}>
-              <p className='player-title player-stat'>{player.Name}, {player.Team}</p>
+              <p className='player-title'>{player.Name}, {player.Team}</p>
               {/* <p className='player-stat'>Team: {player.Team}</p> */}
               <p className='player-stat'>Position: {player.Position}</p>
               <p className='player-stat'>ADP: {player.AverageDraftPosition}</p>
@@ -187,11 +187,11 @@ export default class Player extends Component {
               <div className='button-wrapper'>
               {/* <PlayerDetail PlayerID={player.PlayerID}/> */}
               <form 
-              onSubmit={this.handleAddToWatchlist} className="addToWatchlist"
+              onSubmit={this.handleAddToWatchlist} className="add-to-watchlist"
               >
                 <input type="hidden" name='playerId' defaultValue={player.PlayerID}></input> 
                 <input type="hidden" name='userId' defaultValue={window.localStorage.getItem("user_id")}></input> 
-                <button type="submit" className="addToWatchlist">Add to watchlist</button>
+                <button type="submit" className="add-to-watchlist">Add to watchlist</button>
               </form>
               </div>
             </div>
@@ -200,7 +200,7 @@ export default class Player extends Component {
         else {
           return (
           <div className="list player-card" key={key} id={key}>
-          <p className='player-title player-stat'>{player.Name}, {player.Team}</p>
+          <p className='player-title'>{player.Name}, {player.Team}</p>
           {/* <p className='player-stat'>Team: {player.Team}</p> */}
           <p className='player-stat'>Position: {player.Position}</p>
           <p className='player-stat'>ADP: {player.AverageDraftPosition}</p>
@@ -210,11 +210,11 @@ export default class Player extends Component {
           <p className='player-stat'>Projected FP: {player.ProjectedFantasyPoints}</p>
           <div className='button-wrapper'>
           {/* <PlayerDetail PlayerID={player.PlayerID}/> */}
-          <form>
+          <div className='added-to-watchlist-wrapper'>
             {/* <input type="hidden" name='playerId' defaultValue={player.PlayerID}></input> 
             <input type="hidden" name='userId' defaultValue={window.localStorage.getItem("user_id")}></input>  */}
-            <div type="submit" className="addToWatchlist">Added</div>
-          </form>
+            <div className="added-to-watchlist">Added</div>
+          </div>
           </div>
         </div>
           )

@@ -15,6 +15,301 @@
     -webkit-padding-end: 0px;
 }
 
+.nav-header-wrapper {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.nav-header-title {
+    font-size: 2rem;
+}
+
+.home-header-wrapper {
+    padding: 6px;
+    margin: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.home-header,
+.main {
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.main-nav {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+    top: 0;
+    width: 100%;
+    padding: 10px;
+    background-color: grey;
+    border: 1px solid black;
+}
+
+.main-nav a {
+    text-decoration: none;
+}
+
+
+
+.main-nav a:visited {
+    color: black;
+}
+
+.main-nav a:hover {
+    color:  yellow;
+}
+
+/* a:link - a normal, unvisited link
+a:visited - a link the user has visited
+a:hover - a link when the user mouses over it
+a:active - a link the moment it is clicked */
+
+.logout-wrapper,
+.nav-left {
+    display: inline-block;
+}
+
+.nav-left {
+    width: 50%;
+}
+
+.logout-wrapper {
+    width: 32%;
+    float: right;
+    text-align: right;
+}
+
+.watchlist-link-wrapper,
+.home-link-wrapper {
+    width: 50%;
+    margin-left: 4px;
+    margin-right: 5px;
+}
+
+.home-link-wrapper {
+    margin-left: 1px;
+}
+
+/* .logout {
+    float: right;
+    margin-right: 2px;
+    padding: 5px;
+} */
+
+/* .nav-left {
+    flex-direction: row;
+    float: left;
+}
+
+
+
+
+.signup-form {
+    width: 90%;
+    padding: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup-header {
+    text-align: center;
+}
+
+.signup-form-entry {
+    text-align: center;
+}
+
+.signup-control {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup-button-wrapper, .login-button-wrapper {
+    width: 100%;
+    height: 20px;
+    margin-top: 13px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup-button, .login-button {
+    display: block;
+    width: 45%;
+    height: 30px;
+    border-radius: 5px;
+}
+
+
+
+label {
+    padding: 5px;
+}
+
+input {
+    margin-bottom: 5px;
+}
+
+button {
+    display: block;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center; 
+}*/
+
+.login-link-wrapper {
+    text-align: center;
+    margin-top: 10px;
+} 
+
+header {
+    margin-top: 45px;
+}
+
+.login-form {
+    width: 90%;
+    padding: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-header {
+    text-align: center;
+}
+
+.login-form-entry {
+    text-align: center;
+}
+
+.login-control {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+label {
+    padding: 5px;
+}
+
+input {
+    background-color:  #eee;
+    border: none;
+    border-radius: 2px;
+	padding: 12px 15px;
+	margin: 8px 0;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+input:hover {
+    background-color:rgb(211, 201, 201);
+}
+
+.registration-link-wrapper {
+    text-align: center;
+    margin-top: 10px;
+}
+
+button, .added-to-watchlist {
+    display: block;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.added-to-watchlist {
+    text-align: center;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    border: none;
+    background-color: grey;
+}
+
+button:hover {
+    background-color: rgb(211,201,201)
+}
+
+.demo-creds {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 8px;
+}
+
+.home-header {
+    font-size: 2.2em;
+}
+
+.top-players-title-wrapper, .watchlist-header-wrapper {
+    margin-top: 10px;
+    padding: 10px;
+}
+
+/* .top-players-title {
+
+} */
+
+.player-list-wrapper, .watchlist-list-wrapper {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    height: 700px;
+    overflow-y: auto;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.player-card,
+.watchlist-card {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.player-title {
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.player-stat {
+    text-align: left;
+    margin-left: 5px;
+    width: 100%;
+    font-size: 12px;}
+
+form input {
+    display: inline-block
+}
+
+.button-wrapper {
+    width: 100%;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
 footer {
     display: block;
     height: auto;
@@ -22,12 +317,64 @@ footer {
     float: none;
     margin-top: 30px;
     text-align: center;
-  }
-  
-  footer a {
+}
+
+footer a {
     display: inline-block;
     width: auto;
     padding: 20px;
     color: black;
     font-size: 25px;
-  }
+}
+
+
+/*large desktop*/
+/* @media only screen and (max-width: 1600px) {
+    body {
+        border: 3px solid yellow;
+    }
+    .skills-container .skills-container-images figure {
+        width: 16%;
+    }
+} */
+
+/*iPhone portrait*/
+@media only screen and (min-width: 320px) {
+    body {
+        border: 3px solid purple;
+    }
+}
+
+/*iPhone landscape*/
+@media only screen and (min-width: 480px) {
+    body {
+        border: 3px solid green;
+    }
+}
+
+/*Android landscape*/
+@media only screen and (min-width: 640px) {
+    body {
+        border: 3px solid brown;
+    }
+}
+
+/*iPad potrait*/
+@media only screen and (min-width: 768px) {
+    body {
+        border: 3px solid red;
+    }
+}
+
+/*iPad lanscape / small laptop*/
+@media only screen and (min-width: 1024px) {
+    body {
+        border: 3 px solid black;
+    }
+}
+
+
+
+
+
+

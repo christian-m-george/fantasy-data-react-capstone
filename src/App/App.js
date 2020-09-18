@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Link from "react-router-dom";
 import Redirect from "react-router-dom";
-import NavBar from "../NavBar/NavBar";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import Home from '../Home/Home';
@@ -25,7 +24,6 @@ class App extends Component {
 
     return (
       <div className="App">
-        <NavBar />
         <Router>
           <main className="homepage">
             <Switch>

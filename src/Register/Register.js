@@ -156,6 +156,10 @@ export default class Register extends Component {
   render() {
     return (
       <div className="register-page form-container sign-in-container container" id="container">
+        <div className='nav-header-wrapper'>
+          <h1 className='nav-header-title'>FantasyData</h1>
+          <p>keep tabs on the fantasy players you like</p>
+        </div>
         <h2 className='signup-header'>Sign up</h2>
         <form className="signup-form " onSubmit={this.handleSubmitBasicAuth}>
           <div className="signup-form-entry">
@@ -210,8 +214,8 @@ export default class Register extends Component {
               <ValidationError message={this.validateRepeatPassword()} />
             )}
           </div>
-          <div className='sign-up-button-wrapper'>
-          <button type="submit">Sign up</button>
+          <div className='signup-button-wrapper'>
+          <button className='signup-button' type="submit">Sign up</button>
           </div>
           <div className="login-link-wrapper">
               <a id='login-link' href='/login'>Already have an account? Login here</a>

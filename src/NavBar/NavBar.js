@@ -30,6 +30,8 @@ export default class Navbar extends Component {
     // let navLink = this.changeNav();
     let logLink = this.changeLogin();
 
+    
+
     // this.changeAnchor = () => {
     //   if (window.location.pathname === "/") {
     //     return <a href="/watchlist">{navLink}</a>;
@@ -42,15 +44,15 @@ export default class Navbar extends Component {
     return (
       <div className="main-nav">
         <div className="nav-left">
-          <div className='home-link-wrapper'>
-            <a href='/'>Home</a>
-          </div>
-          <div className='watchlist-link-wrapper'>
-            <a href='/watchlist'>Watchlist</a>
-          </div>
+          <span className='home-link-wrapper'>
+            <a href='/' className='nav-link'>Home</a>
+          </span>
+          <span className='watchlist-link-wrapper'>
+            <a href='/watchlist' className='nav-link'>Watchlist</a>
+          </span>
         </div>
-        <div className="logout">
-          <a href="/login" onClick={this.onLogout}>
+        <div className="logout-wrapper">
+          <a href="/login" className='logout-button' onClick={this.onLogout}>
             {logLink}
           </a>
         </div>

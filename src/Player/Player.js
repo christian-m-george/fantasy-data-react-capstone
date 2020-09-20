@@ -100,14 +100,17 @@ export default class Player extends Component {
       body: JSON.stringify(data)
     })
     .then((response) => {
-      console.log(response);
+      return response.json()
     })
+    .then(console.log(this.state, 'first log'))
+    .then(playerJson => this.setState({watchlistPlayers: [...this.state.watchlistPlayers, playerJson.player_id]}))
+    .then(console.log(this.state), 'second log')
     .catch((err) => {
       this.setState({
         error: err.message,
       });
     });
-    window.location = '/'
+    // window.location = '/'
   }
 
 
@@ -172,7 +175,7 @@ export default class Player extends Component {
     if (this.state.players.length !== 0) {
       showPlayers = this.state.players.map((player, key) => {
         let watchlistPlayerArray = this.state.watchlistPlayers
-        console.log(watchlistPlayerArray, 'this is watchlist player array')
+        // console.log(watchlistPlayerArray, 'this is watchlist player array')
         if (!watchlistPlayerArray.includes(player.PlayerID)) {
           return (
             <div className="list player-card" key={key} id={key}>

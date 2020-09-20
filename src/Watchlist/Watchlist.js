@@ -18,14 +18,14 @@ export default class Watchlist extends Component {
     // console.log(config.API_ENDPOINT, "this is the endpoint");
     const searchURL = `${config.API_ENDPOINT}/watchlist/${window.localStorage.getItem("user_id")}`;
 
-    const options = {
-      method: "GET",
-      header: {
-        "Content-Type": "application/json",
-      },
-    };
+    // const options = {
+    //   method: "GET",
+    //   header: {
+    //     "Content-Type": "application/json",
+    //   },
+    // };
 
-    fetch(searchURL, options)
+    fetch(searchURL)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
@@ -34,7 +34,7 @@ export default class Watchlist extends Component {
       })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        console.log(data);
         if (data.totalItems === 0) throw new Error("No players found");
 
         const showPlayerDetails = data.map((onePlayerId) => {
@@ -42,9 +42,9 @@ export default class Watchlist extends Component {
           return this.renderWatchlistPlayers(onePlayerId.player_id)
         })
 
-        this.setState({
-          showPlayerDetails: showPlayerDetails,
-        });
+        // this.setState({
+        //   showPlayerDetails: showPlayerDetails,
+        // });
         // console.log(this.state)
       })
       .catch((err) => {
@@ -52,6 +52,15 @@ export default class Watchlist extends Component {
           error: err.message,
         });
       });
+  }
+
+  removePlayer = (removePlayerId) => {
+    console.log(removePlayerId)
+    console.log(console.log(this.state.showPlayerDetails, 'this is show player deets'))
+    let filteredArray = this.state.showPlayerDetails.filter(player => player.PlayerID !== removePlayerId)
+    console.log(filteredArray, 'this is filtered array')
+    this.setState({ showPlayerDetails: filteredArray });
+    console.log(this.state, 'final state')
   }
 
   handleAddToWatchlist = (ev) => {
@@ -124,36 +133,44 @@ export default class Watchlist extends Component {
       });
   }
 
-  handleRemoveFromWatchlist = (ev) => {
+  handleRemoveFromWatchlist = (removePlayerId, ev) => {
     console.log('event triggered');
     ev.preventDefault();
 
-    const data = {}
+    // const data = {}
 
-    const formData = new FormData(ev.target)
+    // const formData = new FormData(ev.target)
 
-    for (let value of formData) {
-      data[value[0]] = value[1]
-    }
+    // for (let value of formData) {
+    //   data[value[0]] = value[1]
+    // }
 
-    console.log(data, 'this is the data from event target')
+    // console.log(data, 'this is the data from event target')
 
-    fetch(`${config.API_ENDPOINT}/watchlist/${window.localStorage.getItem("user_id")}/${data.playerId}`, {
+    fetch(`${config.API_ENDPOINT}/watchlist/${window.localStorage.getItem("user_id")}/${removePlayerId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
       },
       // body: JSON.stringify(data)
     })
-      .then((response) => {
-        console.log(response);
-      })
+      // .then(console.log(this.state, 'this should be the state'))
+      // .then((response) => {
+      //   console.log(response);
+      // })
+      .then(() =>  {
+        // window.location.href = '/watchlist'
+        // console.log(removePlayerId, 'this should b id for rmv plyr') || 
+        this.removePlayer(removePlayerId)
+      }
+        // console.log(this.state.showPlayerDetails, 'showing players in state')
+      )
       .catch((err) => {
         this.setState({
           error: err.message,
         });
       });
-    window.location = '/watchlist'
+
   }
 
   render() {
@@ -161,7 +178,7 @@ export default class Watchlist extends Component {
     // let displayPlayerDetails = '';
     // if (this.state.showPlayerDetails.length != 0) {
     let displayPlayerDetails = this.state.showPlayerDetails.map((onePlayerDetail) => {
-      console.log(onePlayerDetail)
+      // console.log(onePlayerDetail)
       let shownDetails = '';
       if (onePlayerDetail != undefined) {
         switch (onePlayerDetail.Position) {
@@ -191,7 +208,7 @@ export default class Watchlist extends Component {
                 <div className='player-stat'>Two Point Conversion Runs: {onePlayerDetail.TwoPointConversionRuns}</div>
                 <div className='button-wrapper'>
                   <form
-                    onSubmit={this.handleRemoveFromWatchlist}
+                    onSubmit={(ev) => this.handleRemoveFromWatchlist(onePlayerDetail.PlayerID, ev)}
                     className="removeFromWatchlist"
                   >
                     <input type="hidden" name='playerId' defaultValue={onePlayerDetail.PlayerID}></input>
@@ -234,7 +251,7 @@ export default class Watchlist extends Component {
                 <div className='player-stat'>TwoPoint Conversion Runs: {onePlayerDetail.TwoPointConversionRuns}</div>
                 <div className='button-wrapper'>
                   <form
-                    onSubmit={this.handleRemoveFromWatchlist}
+                    onSubmit={(ev) => this.handleRemoveFromWatchlist(onePlayerDetail.PlayerID, ev)}
                     className="removeFromWatchlist"
                   >
                     <input type="hidden" name='playerId' defaultValue={onePlayerDetail.PlayerID}></input>
@@ -277,7 +294,7 @@ export default class Watchlist extends Component {
                 <div className='player-stat'>Two Point Conversion Runs: {onePlayerDetail.TwoPointConversionRuns}</div>
                 <div className='button-wrapper'>
                   <form
-                    onSubmit={this.handleRemoveFromWatchlist}
+                    onSubmit={(ev) => this.handleRemoveFromWatchlist(onePlayerDetail.PlayerID, ev)}
                     className="removeFromWatchlist"
                   >
                     <input type="hidden" name='playerId' defaultValue={onePlayerDetail.PlayerID}></input>
@@ -319,7 +336,7 @@ export default class Watchlist extends Component {
                 <div className='player-stat'>TwoPointConversionReceptions: {onePlayerDetail.TwoPointConversionReceptions}</div>
                 <div className='button-wrapper'>
                   <form
-                    onSubmit={this.handleRemoveFromWatchlist}
+                    onSubmit={(ev) => this.handleRemoveFromWatchlist(onePlayerDetail.PlayerID, ev)}
                     className="removeFromWatchlist"
                   >
                     <input type="hidden" name='playerId' defaultValue={onePlayerDetail.PlayerID}></input>
@@ -359,7 +376,7 @@ export default class Watchlist extends Component {
                 <div className='player-stat'>Punts Had Blocked: {onePlayerDetail.PuntsHadBlocked}</div>
                 <div className='button-wrapper'>
                   <form
-                    onSubmit={this.handleRemoveFromWatchlist}
+                    onSubmit={(ev) => this.handleRemoveFromWatchlist(onePlayerDetail.PlayerID, ev)}
                     className="removeFromWatchlist"
                   >
                     <input type="hidden" name='playerId' defaultValue={onePlayerDetail.PlayerID}></input>
@@ -374,6 +391,7 @@ export default class Watchlist extends Component {
         }
         return shownDetails
       }
+      console.log(this.state)
     })
 
     return (
@@ -386,7 +404,7 @@ export default class Watchlist extends Component {
           <h2>Your Watchlist</h2>
         </div>
         <div className='watchlist-list-wrapper'>
-        {displayPlayerDetails}
+          {displayPlayerDetails}
         </div>
       </div>
     );

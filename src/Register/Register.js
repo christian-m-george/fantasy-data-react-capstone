@@ -6,7 +6,7 @@ import "./Register.css";
 export default class Register extends Component {
   static defaultProps = {
     history: {
-      push: () => {},
+      push: () => { },
     },
   };
 
@@ -155,72 +155,75 @@ export default class Register extends Component {
   }
   render() {
     return (
-      <div className="register-page form-container sign-in-container container" id="container">
+      <div>
         <div className='nav-header-wrapper'>
           <h1 className='nav-header-title'>FantasyData</h1>
           <p>keep tabs on the fantasy players you like</p>
         </div>
-        <h2 className='signup-header'>Sign up</h2>
-        <form className="signup-form " onSubmit={this.handleSubmitBasicAuth}>
-          <div className="signup-form-entry">
-            <label htmlFor="username">Username</label>
-            <input
-              className="registration-control"
-              type="text"
-              name="userName"
-              id="userName"
-              onChange={(e) => this.updateUserName(e.target.value)}
-            />
-            {this.state.userName.touched && (
-              <ValidationError message={this.validateUserName()} />
-            )}
-          </div>
-          <div className="signup-form-entry">
-            <label htmlFor="email">Email</label>
-            <input
-              className="registration-control"
-              type="text"
-              name="email"
-              id="email"
-              onChange={(e) => this.updateEmail(e.target.value)}
-            />
-            {this.state.email.touched && (
-              <ValidationError message={this.validateEmail()} />
-            )}
-          </div>
-          <div className="signup-form-entry">
-            <label htmlFor="password">Password</label>
-            <input
-              className="registration-control"
-              type="password"
-              name="password"
-              id="password"
-              onChange={(e) => this.updatePassword(e.target.value)}
-            />
-            {this.state.password.touched && (
-              <ValidationError message={this.validatePassword()} />
-            )}
-          </div>
-          <div className="signup-form-entry">
-            <label htmlFor="repeat-password">Repeat Password</label>
-            <input
-              className="registration-control"
-              type="password"
-              name="repeatPassword"
-              id="repeatPassword"
-              onChange={(e) => this.updateRepeatPassword(e.target.value)}
-            />
-            {this.state.repeatPassword.touched && (
-              <ValidationError message={this.validateRepeatPassword()} />
-            )}
-          </div>
-          <div className='signup-button-wrapper'>
-          <button className='signup-button' type="submit">Sign up</button>
-          </div>
-          <div className="login-link-wrapper">
+        <div className="register-page form-container sign-in-container container" id="container">
+          <div className='signup-header-wrapper'>
+            <h2 className='signup-header'>Sign up</h2></div>
+          <form className="signup-form " onSubmit={this.handleSubmitBasicAuth}>
+            <div className="signup-form-entry">
+              <label htmlFor="username">Username</label>
+              <input
+                className="registration-control"
+                type="text"
+                name="userName"
+                id="userName"
+                onChange={(e) => this.updateUserName(e.target.value)}
+              />
+              {this.state.userName.touched && (
+                <ValidationError message={this.validateUserName()} />
+              )}
+            </div>
+            <div className="signup-form-entry">
+              <label htmlFor="email">Email</label>
+              <input
+                className="registration-control"
+                type="text"
+                name="email"
+                id="email"
+                onChange={(e) => this.updateEmail(e.target.value)}
+              />
+              {this.state.email.touched && (
+                <ValidationError message={this.validateEmail()} />
+              )}
+            </div>
+            <div className="signup-form-entry">
+              <label htmlFor="password">Password</label>
+              <input
+                className="registration-control"
+                type="password"
+                name="password"
+                id="password"
+                onChange={(e) => this.updatePassword(e.target.value)}
+              />
+              {this.state.password.touched && (
+                <ValidationError message={this.validatePassword()} />
+              )}
+            </div>
+            <div className="signup-form-entry">
+              <label htmlFor="repeat-password">Repeat Password</label>
+              <input
+                className="registration-control"
+                type="password"
+                name="repeatPassword"
+                id="repeatPassword"
+                onChange={(e) => this.updateRepeatPassword(e.target.value)}
+              />
+              {this.state.repeatPassword.touched && (
+                <ValidationError message={this.validateRepeatPassword()} />
+              )}
+            </div>
+            <div className='signup-button-wrapper'>
+              <button className='signup-button' type="submit">Sign up</button>
+            </div>
+            <div className="login-link-wrapper">
               <a id='login-link' href='/login'>Already have an account? Login here</a>
             </div>
-        </form>
+          </form>
+        </div>
       </div>
     );
   }

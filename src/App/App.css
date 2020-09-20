@@ -15,6 +15,11 @@
     -webkit-padding-end: 0px;
 }
 
+body {
+    background-color: black;
+    color: white;
+}
+
 .nav-header-wrapper {
     width: 75%;
     margin-left: auto;
@@ -55,6 +60,8 @@
     padding: 10px;
     background-color: grey;
     border: 1px solid black;
+    box-shadow: 0 14px 28px rgba(179, 172, 172, 0.25), 
+    0 10px 10px rgba(0,0,0,0.22);
 }
 
 .main-nav a {
@@ -81,6 +88,11 @@ a:active - a link the moment it is clicked */
     display: inline-block;
 }
 
+.login-button-wrapper, .signup-button-wrapper {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
 .nav-left {
     width: 50%;
 }
@@ -89,6 +101,18 @@ a:active - a link the moment it is clicked */
     width: 32%;
     float: right;
     text-align: right;
+}
+
+.form-container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+    border: 1px solid white;
+    background-color: rgb(36, 35, 35);
+    box-shadow: 0 14px 28px rgba(240, 229, 229, 0.25), 
+    0 10px 10px rgba(0,0,0,0.22);
+
 }
 
 .watchlist-link-wrapper,
@@ -101,75 +125,6 @@ a:active - a link the moment it is clicked */
 .home-link-wrapper {
     margin-left: 1px;
 }
-
-/* .logout {
-    float: right;
-    margin-right: 2px;
-    padding: 5px;
-} */
-
-/* .nav-left {
-    flex-direction: row;
-    float: left;
-}
-
-
-
-
-.signup-form {
-    width: 90%;
-    padding: 5px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.signup-header {
-    text-align: center;
-}
-
-.signup-form-entry {
-    text-align: center;
-}
-
-.signup-control {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.signup-button-wrapper, .login-button-wrapper {
-    width: 100%;
-    height: 20px;
-    margin-top: 13px;
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.signup-button, .login-button {
-    display: block;
-    width: 45%;
-    height: 30px;
-    border-radius: 5px;
-}
-
-
-
-label {
-    padding: 5px;
-}
-
-input {
-    margin-bottom: 5px;
-}
-
-button {
-    display: block;
-    width: 30%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center; 
-}*/
 
 .login-link-wrapper {
     text-align: center;
@@ -192,13 +147,46 @@ header {
     text-align: center;
 }
 
-.login-form-entry {
+.login-form-entry, .signup-form-entry {
     text-align: center;
 }
 
-.login-control {
+.signup-form-entry {
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.login-control, .signup-control {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup-form, .signup-header-wrapper {
+    text-align: center;
+}
+
+.signup-header-wrapper, .login-header-wrapper {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+#register-link {
+    text-decoration: none;
+    color: white;
+}
+
+#register-link:hover {
+    color: yellow;
+}
+
+#login-link {
+    text-decoration: none;
+    color: white;
+}
+
+#login-link:hover {
+    color: yellow;
 }
 
 label {
@@ -208,7 +196,7 @@ label {
 input {
     background-color:  #eee;
     border: none;
-    border-radius: 2px;
+    border-radius: 3px;
 	padding: 12px 15px;
 	margin: 8px 0;
     width: 100%;
@@ -220,9 +208,14 @@ input:hover {
     background-color:rgb(211, 201, 201);
 }
 
-.registration-link-wrapper {
+.registration-link-wrapper, .login-link-wrapper {
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.add-to-watchlist {
+    height: 28px;
 }
 
 button, .added-to-watchlist {
@@ -230,6 +223,8 @@ button, .added-to-watchlist {
     width: 40%;
     margin-left: auto;
     margin-right: auto;
+    color: black;
+    border-radius: 8px;
 }
 
 .added-to-watchlist {
@@ -239,7 +234,7 @@ button, .added-to-watchlist {
     margin-right: auto;
     padding: 5px;
     border: none;
-    background-color: grey;
+    background-color: #eee;
 }
 
 button:hover {
@@ -263,18 +258,16 @@ button:hover {
     padding: 10px;
 }
 
-/* .top-players-title {
-
-} */
-
 .player-list-wrapper, .watchlist-list-wrapper {
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
     height: 700px;
     overflow-y: auto;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    background-color: rgb(36, 35, 35)
+
 }
 
 .player-card,
@@ -283,9 +276,15 @@ button:hover {
     margin-left: auto;
     margin-right: auto;
     border: 1px solid black;
-    border-radius: 3px;
+    border-radius: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+    0 10px 10px rgba(0,0,0,0.22);
+}
+
+.remove-from-watchlist {
+    padding: 5px;
 }
 
 .player-title {
@@ -308,6 +307,7 @@ form input {
     width: 100%;
     margin-bottom: 8px;
     text-align: center;
+    padding: 6px;
 }
 
 footer {
@@ -323,7 +323,7 @@ footer a {
     display: inline-block;
     width: auto;
     padding: 20px;
-    color: black;
+    color: white;
     font-size: 25px;
 }
 

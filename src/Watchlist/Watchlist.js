@@ -41,11 +41,6 @@ export default class Watchlist extends Component {
           // console.log(onePlayerId.player_id)
           return this.renderWatchlistPlayers(onePlayerId.player_id)
         })
-
-        // this.setState({
-        //   showPlayerDetails: showPlayerDetails,
-        // });
-        // console.log(this.state)
       })
       .catch((err) => {
         this.setState({

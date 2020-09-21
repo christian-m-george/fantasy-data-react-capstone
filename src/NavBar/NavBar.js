@@ -17,7 +17,7 @@ export default class Navbar extends Component {
   // };
 
   changeLogin = () => {
-    if (window.location.pathname === "/login") {
+    if (window.location.pathname === "/") {
       return;
     } else if (window.location.pathname === "/register") {
       return;
@@ -45,7 +45,7 @@ export default class Navbar extends Component {
       <div className="main-nav">
         <div className="nav-left">
           <span className='home-link-wrapper'>
-            <a href='/' className='nav-link'>Home</a>
+            <a href='/home' className='nav-link'>Home</a>
           </span>
           <span className='watchlist-link-wrapper'>
             <a href='/watchlist' className='nav-link'>Watchlist</a>

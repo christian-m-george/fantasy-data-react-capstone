@@ -29,7 +29,7 @@ export default class Login extends Component {
   redirectOnSetUser() {
     // console.log('function running')
     if (localStorage.getItem('username') !== undefined) {
-      window.location.href = '/'
+      window.location = '/home'
     }
   }
 
@@ -119,22 +119,22 @@ export default class Login extends Component {
           <h1 className='nav-header-title'>FantasyData</h1>
           <p className='nav-header-text'>keep tabs on the fantasy players you like</p>
         </div>
-        
+
         <div className="form-container sign-in-container">
           <form className="login-form" onSubmit={this.handleSubmitJwtAuth}>
-          <div className='login-header-wrapper'>
-          <h1 className='login-header'>Log In</h1>
-          </div>
+            <div className='login-header-wrapper'>
+              <h1 className='login-header'>Log In</h1>
+            </div>
             <div className="login-form-entry">
               <label htmlFor="email">Email</label>
               <div className='input-wrapper'>
-              <input
-                className="login-control"
-                type="text"
-                name="email"
-                id="email"
-                onChange={(e) => this.updateEmail(e.target.value)}
-              />
+                <input
+                  className="login-control"
+                  type="text"
+                  name="email"
+                  id="email"
+                  onChange={(e) => this.updateEmail(e.target.value)}
+                />
               </div>
               {this.state.email.touched && (
                 <ValidationError message={this.validateEmail()} />
@@ -143,13 +143,13 @@ export default class Login extends Component {
             <div className="login-form-entry">
               <label htmlFor="password">Password</label>
               <div className='input-wrapper'>
-              <input
-                className="login-control"
-                type="password"
-                name="password"
-                id="password"
-                onChange={(e) => this.updatePassword(e.target.value)}
-              />
+                <input
+                  className="login-control"
+                  type="password"
+                  name="password"
+                  id="password"
+                  onChange={(e) => this.updatePassword(e.target.value)}
+                />
               </div>
               {this.state.password.touched && (
                 <ValidationError message={this.validatePassword()} />
@@ -157,10 +157,10 @@ export default class Login extends Component {
             </div>
             <div className='demo-creds'>Demo credentials
                 <div>username: testuser10@gmail.com</div>
-                <div>password: password1</div>
+              <div>password: password1</div>
             </div>
             <div className='login-button-wrapper'>
-            <button className='login-button' type="submit">Log in</button>
+              <button className='login-button' type="submit">Log in</button>
             </div>
             <div className="registration-link-wrapper">
               <a id='register-link' href='/register'>Don't have an account? Register here</a>

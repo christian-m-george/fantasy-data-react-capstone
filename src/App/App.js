@@ -27,15 +27,23 @@ class App extends Component {
         <Router>
           <main className="homepage">
             <Switch>
+            <Route 
+                path="/watchlist" 
+                component={Watchlist} 
+              />
+            <Route
+                path="/register"
+                component={Register}
+              />
               <Route
                 exact
-                path="/"
+                path="/home"
                 render={(props) => (
                   <Home {...props} userId={this.state.user_id} />
                 )}
               />
               <Route
-                path="/login"
+                path="/"
                 render={(props) => (
                   <Login
                     {...props}
@@ -43,18 +51,13 @@ class App extends Component {
                   />
                 )}
               />
-              <Route
-                path="/register"
-                component={Register}
-              />
+
               <Route 
                 path="/home" 
                 component={Home} 
               />
-              <Route 
-                path="/watchlist" 
-                component={Watchlist} 
-              />
+              
+
             </Switch>
           </main>
         </Router>

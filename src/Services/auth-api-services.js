@@ -47,7 +47,7 @@ const AuthApiService = {
                     alert('could not create user')
                 }
                 else {
-                    window.location = '/login'
+                    window.location = '/'
                 }
                 // console.log(res, 'this is the res for post user')
                 // return res.json()

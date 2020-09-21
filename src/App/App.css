@@ -360,16 +360,16 @@ footer a {
 
 /*iPhone portrait*/
 @media only screen and (min-width: 320px) {
-    body {
+    /* body {
         border: 3px solid purple;
-    }
+    } */
 }
 
 /*iPhone landscape*/
 @media only screen and (min-width: 480px) {
-    body {
+    /* body {
         border: 3px solid green;
-    }
+    } */
     .login-control, .registration-control {
         width: 75%;
     }
@@ -377,9 +377,9 @@ footer a {
 
 /*Android landscape*/
 @media only screen and (min-width: 640px) {
-    body {
+    /* body {
         border: 3px solid brown;
-    }
+    } */
     .login-control, .registration-control {
         width: 60%;
     }
@@ -410,9 +410,9 @@ footer a {
 
 /*iPad potrait*/
 @media only screen and (min-width: 768px) {
-    body {
+    /* body {
         border: 3px solid red;
-    }
+    } */
     .signup-button, .login-button {
         width: 35%
     }
@@ -422,9 +422,9 @@ footer a {
 }
 
 @media only screen and (min-width: 1024px) {
-    body {
+    /* body {
         border: 3px solid yellow;
-    }
+    } */
     .signup-button {
         width: 25%
     }

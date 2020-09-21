@@ -1,65 +1,72 @@
-# Movie Forum Capstone
+# Fantasy Data Capstone
 
 FantasyData allows users to access a large database of fantasy football statistics on players on their team or for research on hopeful draft picks! The data is historical and current, and gives a macro level view of a player's performance in seasons past along with some statistics forecasting future performance. Use this to get a leg up on your league mates!
 
 ## Working Prototype
-You can access a working prototype of the node app here: https://movie-forum-capstone-server.herokuapp.com/ 
-
-You can access a working prototype of the react app here:
+You can access a working prototype of the react app here: https://fantasy-data-react-capstone.vercel.app/
 
 ## User Stories
-This app is for logged-in users
+
+* As a new user, I want create an account and login. HIGH IMPORTANCE
+* As a new user, I want to be able to search for fantasy data on specific players. HIGH IMPORTANCE
+* As a new user, I want to be able to access visual representations of the data. HIGH IMPORTANCE
+* As a new user, I want to be able to compare and contrast player data. MEDIUM IMPORTANCE
+* As a new user, I want to be able to add players to a watch list. HIGH IMPORTANCE
+* As a returning user, I want to be able to access my watch lists and edit them. HIGH IMPORTANCE
+* As a returning user, I want to have my previous search history easily accesible. LOW IMPORTANCE
+* As a returning user, I want to see data I have not seen before. MEDIUM IMPORTANCE
+* As an administrator, I want to have access to settings from individual acccounts. LOW IMPORTANCE
+* As an administrator, I want to be able to refresh the player data. HIGH IMPORTANCE*
 
 #### Landing Page
 * as a visitor
-* I want to understand what I can do with this app (or sign up, or log in)
-* so I can decide if I want to use it
+* I want to understand what I can do with this app (or sign up, or log in) so I can decide if I want to use it
 
 #### Sign Up
 * as a visitor
-* I want to register to use this app
-* so I can create a personal Lego® inventory
+* I want to register to use this app so I can create a list of players to keep tabs on
 
 ### Wireframe
-Landing/Login Page |
-:-------------------------:|
-![Landing/Login Page](/github-images/wireframes/Landing-Page.png)  |
+Register Wireframe
+https://repl.it/join/sgmtmvhv-christiangeorge 
+User enters username and confirms password -> if criteria is not met an alert is generated -> once criteria is met user is directed to login
 
-Registration 
-!https://repl.it/@ChristianGeorge/Capstone-Login-Wireframe
+Login Wireframe
+https://repl.it/join/igyjbgia-christiangeorge
 User enters username and confirms password -> if criteria is not met an alert is generated -> once criteria is met user is directed to homepage
 
-Login
-https://repl.it/@ChristianGeorge/Capstone-Login
-User logs in with username and password -> user is notified if criteria is incorrect -> user can click a link to generate an email to reset password -> once user is logged in, user is directed to homepage
+Homepage Wireframe
+https://repl.it/join/fuppmiii-christiangeorge
+User is able to navigate by nav bar at the top -> user can search for players using different search methods -> search methods will take user to player wireframes, listing different players that match search criteria
 
-HomePage
-https://repl.it/@ChristianGeorge/Capstone-Homepage
-User is able to see nav bar at top, trending movies/tv, and the search section below -> user can click on the trending movies to be directed to posts on that topic -> user can use search feature to search for specific media
+Player Wireframe
+https://repl.it/join/oqosezmo-christiangeorge
+User is still ablet to navigate with nav bar at top and user is also able to see a breakdown of player stats, past and projected -> stats are clickable for further details -> user can click and add the player to a watchlist specific to that user
 
-Create Post
-https://repl.it/@ChristianGeorge/CumbersomeNutritiousLinkedlist
-User is able to create a post wiht a chosen title and content -> user can submit that post to be viewed on the homepage and in relation to other topics
-
-Comment on Post
-https://repl.it/@ChristianGeorge/Capstone-Comment-on-post
-Users are able to comment on the post of other users, or on their own posts
+Watchlist Wireframe
+https://repl.it/join/vbuayxuu-christiangeorge
+User is able to navigate from top nav bar and see their list of players that have been added to watchlist -> user can manage their watchlist my moving players up and down as wellas removing them
 
 ## Screenshots
 Landing/Login Page |
 :-------------------------:|
-![Landing Page](/github-images/login-page.png)  | 
-![Landing Page](/github-images/login-page.png)  | 
-![Landing Page](/github-images/login-page.png)  | 
-![Landing Page](/github-images/login-page.png)  | 
-![Landing Page](/github-images/login-page.png)  | 
-![Landing Page](/github-images/login-page.png)  | 
+![Login Page](/public/github-images/login-screenshot.png)  | 
+Register Page |
+:-------------------------:|
+![Register Page](/public/github-images/register-screenshot.png)  | 
+Home Page |
+:-------------------------:|
+![Home Page](/public/github-images/home-screenshot.png)  | 
+Watchlist Page |
+:-------------------------:|
+![Watchlist Page](/public/github-images/watchlist-screenshot.png)  | 
+
 
 ## Functionality
 The app's functionality includes:
 
 * Every User has the ability to create an account that stores information unique to them
-* User can research players by ADP, Fantasy Points, Yards by Ground, etc..
+* User can research players and see statistics on historical performance and fantasy statistics such as ADP
 * User can add players to Watchlist
 
 ## Business Objects (database structure)

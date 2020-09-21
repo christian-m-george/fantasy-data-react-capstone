@@ -42,7 +42,7 @@ export default class Watchlist extends Component {
   }
 
   removePlayer = (removePlayerId) => {
-    console.log(removePlayerId)
+    console.log(removePlayerId, 'this is remove player id')
     console.log(console.log(this.state, 'this is show player deets'))
     let filteredArray = this.state.showPlayerDetails.filter(player => player.PlayerID !== removePlayerId)
     console.log(filteredArray, 'this is filtered array')

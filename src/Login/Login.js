@@ -127,6 +127,7 @@ export default class Login extends Component {
           </div>
             <div className="login-form-entry">
               <label htmlFor="email">Email</label>
+              <div className='input-wrapper'>
               <input
                 className="login-control"
                 type="text"
@@ -134,12 +135,14 @@ export default class Login extends Component {
                 id="email"
                 onChange={(e) => this.updateEmail(e.target.value)}
               />
+              </div>
               {this.state.email.touched && (
                 <ValidationError message={this.validateEmail()} />
               )}
             </div>
             <div className="login-form-entry">
               <label htmlFor="password">Password</label>
+              <div className='input-wrapper'>
               <input
                 className="login-control"
                 type="password"
@@ -147,6 +150,7 @@ export default class Login extends Component {
                 id="password"
                 onChange={(e) => this.updatePassword(e.target.value)}
               />
+              </div>
               {this.state.password.touched && (
                 <ValidationError message={this.validatePassword()} />
               )}

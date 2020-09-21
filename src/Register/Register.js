@@ -166,52 +166,53 @@ export default class Register extends Component {
           <form className="signup-form " onSubmit={this.handleSubmitBasicAuth}>
             <div className="signup-form-entry">
               <label htmlFor="username">Username</label>
-              <input
+
+              <div className='input-wrapper'><input
                 className="registration-control"
                 type="text"
                 name="userName"
                 id="userName"
                 onChange={(e) => this.updateUserName(e.target.value)}
-              />
+              /></div>
               {this.state.userName.touched && (
                 <ValidationError message={this.validateUserName()} />
               )}
             </div>
             <div className="signup-form-entry">
               <label htmlFor="email">Email</label>
-              <input
+              <div className='input-wrapper'><input
                 className="registration-control"
                 type="text"
                 name="email"
                 id="email"
                 onChange={(e) => this.updateEmail(e.target.value)}
-              />
+              /></div>
               {this.state.email.touched && (
                 <ValidationError message={this.validateEmail()} />
               )}
             </div>
             <div className="signup-form-entry">
               <label htmlFor="password">Password</label>
-              <input
-                className="registration-control"
-                type="password"
-                name="password"
-                id="password"
-                onChange={(e) => this.updatePassword(e.target.value)}
-              />
+              <div className='input-wrapper'><input
+              className="registration-control"
+              type="password"
+              name="password"
+              id="password"
+              onChange={(e) => this.updatePassword(e.target.value)}
+              /></div>
               {this.state.password.touched && (
                 <ValidationError message={this.validatePassword()} />
               )}
             </div>
             <div className="signup-form-entry">
               <label htmlFor="repeat-password">Repeat Password</label>
-              <input
-                className="registration-control"
-                type="password"
-                name="repeatPassword"
-                id="repeatPassword"
-                onChange={(e) => this.updateRepeatPassword(e.target.value)}
-              />
+              <div className='input-wrapper'><input
+              className="registration-control"
+              type="password"
+              name="repeatPassword"
+              id="repeatPassword"
+              onChange={(e) => this.updateRepeatPassword(e.target.value)}
+              /></div>
               {this.state.repeatPassword.touched && (
                 <ValidationError message={this.validateRepeatPassword()} />
               )}

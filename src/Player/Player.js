@@ -224,6 +224,6 @@ export default class Player extends Component {
         }
       });
     }
-    return <div>{showPlayers}</div>;
+    return <div className='div-wrapper'>{showPlayers}</div>;
   }
 }

@@ -17,14 +17,6 @@ export default class Watchlist extends Component {
   componentDidMount() {
     // console.log(config.API_ENDPOINT, "this is the endpoint");
     const searchURL = `${config.API_ENDPOINT}/watchlist/${window.localStorage.getItem("user_id")}`;
-
-    // const options = {
-    //   method: "GET",
-    //   header: {
-    //     "Content-Type": "application/json",
-    //   },
-    // };
-
     fetch(searchURL)
       .then((res) => {
         if (!res.ok) {
@@ -51,7 +43,7 @@ export default class Watchlist extends Component {
 
   removePlayer = (removePlayerId) => {
     console.log(removePlayerId)
-    console.log(console.log(this.state.showPlayerDetails, 'this is show player deets'))
+    console.log(console.log(this.state, 'this is show player deets'))
     let filteredArray = this.state.showPlayerDetails.filter(player => player.PlayerID !== removePlayerId)
     console.log(filteredArray, 'this is filtered array')
     this.setState({ showPlayerDetails: filteredArray });
@@ -154,8 +146,6 @@ export default class Watchlist extends Component {
       //   console.log(response);
       // })
       .then(() =>  {
-        // window.location.href = '/watchlist'
-        // console.log(removePlayerId, 'this should b id for rmv plyr') || 
         this.removePlayer(removePlayerId)
       }
         // console.log(this.state.showPlayerDetails, 'showing players in state')

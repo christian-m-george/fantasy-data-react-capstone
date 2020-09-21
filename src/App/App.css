@@ -60,8 +60,8 @@ body {
     padding: 10px;
     background-color: grey;
     border: 1px solid black;
-    box-shadow: 0 14px 28px rgba(179, 172, 172, 0.25), 
-    0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(179, 172, 172, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .main-nav a {
@@ -75,7 +75,11 @@ body {
 }
 
 .main-nav a:hover {
-    color:  yellow;
+    color: yellow;
+}
+
+.input-wrapper {
+    width: 100%;
 }
 
 /* a:link - a normal, unvisited link
@@ -88,9 +92,15 @@ a:active - a link the moment it is clicked */
     display: inline-block;
 }
 
-.login-button-wrapper, .signup-button-wrapper {
+.login-button-wrapper,
+.signup-button-wrapper {
     margin-top: 10px;
     margin-bottom: 15px;
+}
+
+.login-button,
+.signup-button {
+    padding: 6px;
 }
 
 .nav-left {
@@ -110,8 +120,8 @@ a:active - a link the moment it is clicked */
     border-radius: 4px;
     border: 1px solid white;
     background-color: rgb(36, 35, 35);
-    box-shadow: 0 14px 28px rgba(240, 229, 229, 0.25), 
-    0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(240, 229, 229, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
 
 }
 
@@ -129,7 +139,7 @@ a:active - a link the moment it is clicked */
 .login-link-wrapper {
     text-align: center;
     margin-top: 10px;
-} 
+}
 
 header {
     margin-top: 45px;
@@ -147,7 +157,8 @@ header {
     text-align: center;
 }
 
-.login-form-entry, .signup-form-entry {
+.login-form-entry,
+.signup-form-entry {
     text-align: center;
 }
 
@@ -157,16 +168,19 @@ header {
     margin-right: auto;
 }
 
-.login-control, .signup-control {
+.login-control,
+.signup-control {
     margin-left: auto;
     margin-right: auto;
 }
 
-.signup-form, .signup-header-wrapper {
+.signup-form,
+.signup-header-wrapper {
     text-align: center;
 }
 
-.signup-header-wrapper, .login-header-wrapper {
+.signup-header-wrapper,
+.login-header-wrapper {
     margin-top: 10px;
     margin-bottom: 15px;
 }
@@ -194,21 +208,22 @@ label {
 }
 
 input {
-    background-color:  #eee;
+    background-color: #eee;
     border: none;
     border-radius: 3px;
-	padding: 12px 15px;
-	margin: 8px 0;
+    padding: 12px 15px;
+    margin: 8px 0;
     width: 100%;
     text-align: center;
     margin-bottom: 5px;
 }
 
 input:hover {
-    background-color:rgb(211, 201, 201);
+    background-color: rgb(211, 201, 201);
 }
 
-.registration-link-wrapper, .login-link-wrapper {
+.registration-link-wrapper,
+.login-link-wrapper {
     text-align: center;
     margin-top: 10px;
     margin-bottom: 15px;
@@ -218,7 +233,8 @@ input:hover {
     height: 28px;
 }
 
-button, .added-to-watchlist {
+button,
+.added-to-watchlist {
     display: block;
     width: 40%;
     margin-left: auto;
@@ -238,7 +254,7 @@ button, .added-to-watchlist {
 }
 
 button:hover {
-    background-color: rgb(211,201,201)
+    background-color: rgb(211, 201, 201)
 }
 
 .demo-creds {
@@ -253,12 +269,14 @@ button:hover {
     font-size: 2.2em;
 }
 
-.top-players-title-wrapper, .watchlist-header-wrapper {
+.top-players-title-wrapper,
+.watchlist-header-wrapper {
     margin-top: 10px;
     padding: 10px;
 }
 
-.player-list-wrapper, .watchlist-list-wrapper {
+.player-list-wrapper,
+.watchlist-list-wrapper {
     border-top: 1px solid white;
     border-bottom: 1px solid white;
     height: 700px;
@@ -266,8 +284,8 @@ button:hover {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgb(36, 35, 35)
-
+    background-color: rgb(36, 35, 35);
+    text-align: center;
 }
 
 .player-card,
@@ -279,8 +297,9 @@ button:hover {
     border-radius: 5px;
     margin-top: 5px;
     margin-bottom: 5px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-    0 10px 10px rgba(0,0,0,0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    display: inline-block;
 }
 
 .remove-from-watchlist {
@@ -297,7 +316,8 @@ button:hover {
     text-align: left;
     margin-left: 5px;
     width: 100%;
-    font-size: 12px;}
+    font-size: 12px;
+}
 
 form input {
     display: inline-block
@@ -350,12 +370,41 @@ footer a {
     body {
         border: 3px solid green;
     }
+    .login-control, .registration-control {
+        width: 75%;
+    }
 }
 
 /*Android landscape*/
 @media only screen and (min-width: 640px) {
     body {
         border: 3px solid brown;
+    }
+    .login-control, .registration-control {
+        width: 60%;
+    }
+
+    .player-list-wrapper {
+        display: block;
+    }
+
+    .div-wrapper,
+    .watchlist-list-wrapper {
+        text-align: center;
+    }
+
+    .player-card,
+    .watchlist-card {
+        width: 45%;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    button {
+        width: 75%;
+    }
+    .signup-button, .login-button {
+        width: 40%
     }
 }
 
@@ -364,17 +413,33 @@ footer a {
     body {
         border: 3px solid red;
     }
-}
-
-/*iPad lanscape / small laptop*/
-@media only screen and (min-width: 1024px) {
-    body {
-        border: 3 px solid black;
+    .signup-button, .login-button {
+        width: 35%
+    }
+    .form-container {
+        width: 75%;
     }
 }
 
+@media only screen and (min-width: 1024px) {
+    body {
+        border: 3px solid yellow;
+    }
+    .signup-button {
+        width: 25%
+    }
 
+    .player-card,
+    .watchlist-card {
+        width: 30%;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
 
-
-
-
+/*iPad lanscape / small laptop*/
+/* @media only screen and (min-width: 1024px) {
+    body {
+        border: 3 px solid yellow;
+    }
+} */

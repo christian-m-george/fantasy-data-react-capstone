@@ -27,12 +27,16 @@ export default class Watchlist extends Component {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.totalItems === 0) throw new Error("No players found");
+        if (data.length === 0) throw new Error("No players found");
+        else {
 
-        const showPlayerDetails = data.map((onePlayerId) => {
-          // console.log(onePlayerId.player_id)
+        // const showPlayerDetails = data.map((onePlayerId) => {
+        //   return this.renderWatchlistPlayers(onePlayerId.player_id)
+        data.map((onePlayerId) => {
           return this.renderWatchlistPlayers(onePlayerId.player_id)
-        })
+        }
+        )}
+      // .then(console.log(this.state, 'this is state after component did mount'))
       })
       .catch((err) => {
         this.setState({
@@ -43,47 +47,50 @@ export default class Watchlist extends Component {
 
   removePlayer = (removePlayerId) => {
     console.log(removePlayerId, 'this is remove player id')
-    console.log(console.log(this.state, 'this is show player deets'))
-    let filteredArray = this.state.showPlayerDetails.filter(player => player.PlayerID !== removePlayerId)
+    console.log(this.state, 'this is show player deets')
+    let filteredArray = this.state.showPlayerDetails.filter(player => {
+      console.log(removePlayerId, player.PlayerID)
+      return player.PlayerID !== removePlayerId
+    })
     console.log(filteredArray, 'this is filtered array')
     this.setState({ showPlayerDetails: filteredArray });
     console.log(this.state, 'final state')
   }
 
-  handleAddToWatchlist = (ev) => {
-    // console.log('event triggered');
-    ev.preventDefault();
+  // handleAddToWatchlist = (ev) => {
+  //   // console.log('event triggered');
+  //   ev.preventDefault();
 
-    const data = {}
+  //   const data = {}
 
-    const formData = new FormData(ev.target)
+  //   const formData = new FormData(ev.target)
 
-    for (let value of formData) {
-      data[value[0]] = value[1]
-    }
+  //   for (let value of formData) {
+  //     data[value[0]] = value[1]
+  //   }
 
-    // console.log(data, 'this is the data from event target')
+  //   // console.log(data, 'this is the data from event target')
 
-    fetch(`${config.API_ENDPOINT}/watchlist/watchlist/${window.localStorage.user_id}`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(data)
-    })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => {
-        this.setState({
-          error: err.message,
-        });
-      });
-  }
+  //   fetch(`${config.API_ENDPOINT}/watchlist/watchlist/${window.localStorage.user_id}`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'content-type': 'application/json',
+  //     },
+  //     body: JSON.stringify(data)
+  //   })
+  //     .then((response) => {
+  //       console.log(response);
+  //     })
+  //     .catch((err) => {
+  //       this.setState({
+  //         error: err.message,
+  //       });
+  //     });
+  // }
 
   renderWatchlistPlayers(playerId) {
     const searchURL = `${config.API_ENDPOINT}/player-detail/player/details/season/${playerId}`;
-    // console.log(searchURL, "this is the endpoint");
+    console.log(searchURL, "this is the endpoint");
 
     const options = {
       method: "GET",
@@ -102,15 +109,20 @@ export default class Watchlist extends Component {
         return res.json();
       })
       .then((data) => {
-        // console.log(data);
+        console.log(data, 'this is data from detail fetch');
         output.push(data)
-        if (data.totalItems === 0) throw new Error("No players found");
+        if (data.length === 0) {
+          console.log('no historical data for this player')
+        }
+        else {
+        // let existingPlayers = []
         let existingPlayers = this.state.showPlayerDetails
         existingPlayers.push(data[0])
         this.setState({
           showPlayerDetails: existingPlayers,
           error: null,
         });
+      }
         // console.log(this.state.showPlayerDetails)
       })
       .catch((err) => {
@@ -123,17 +135,6 @@ export default class Watchlist extends Component {
   handleRemoveFromWatchlist = (removePlayerId, ev) => {
     console.log('event triggered');
     ev.preventDefault();
-
-    // const data = {}
-
-    // const formData = new FormData(ev.target)
-
-    // for (let value of formData) {
-    //   data[value[0]] = value[1]
-    // }
-
-    // console.log(data, 'this is the data from event target')
-
     fetch(`${config.API_ENDPOINT}/watchlist/${window.localStorage.getItem("user_id")}/${removePlayerId}`, {
       method: 'DELETE',
       headers: {

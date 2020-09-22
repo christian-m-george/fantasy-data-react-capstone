@@ -140,16 +140,10 @@ export default class Watchlist extends Component {
       headers: {
         'content-type': 'application/json',
       },
-      // body: JSON.stringify(data)
     })
-      // .then(console.log(this.state, 'this should be the state'))
-      // .then((response) => {
-      //   console.log(response);
-      // })
       .then(() =>  {
         this.removePlayer(removePlayerId)
       }
-        // console.log(this.state.showPlayerDetails, 'showing players in state')
       )
       .catch((err) => {
         this.setState({

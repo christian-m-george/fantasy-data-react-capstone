@@ -156,7 +156,7 @@ export default class Login extends Component {
               )}
             </div>
             <div className='demo-creds'>Demo credentials
-                <div>username: testuser10@gmail.com</div>
+                <div>username: demouser1@gmail.com</div>
               <div>password: password1</div>
             </div>
             <div className='login-button-wrapper'>

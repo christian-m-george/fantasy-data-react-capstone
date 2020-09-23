@@ -10,6 +10,7 @@ export default class Watchlist extends Component {
     this.state = {
       players: [],
       error: '',
+      hasHistoricData: null,
       showPlayerDetails: []
     };
   }
@@ -112,8 +113,10 @@ export default class Watchlist extends Component {
         console.log(data, 'this is data from detail fetch');
         output.push(data)
         if (data.length === 0) {
-          console.log('no historical data for this player')
-        }
+          this.setState({
+            hasHistoricData: false
+          });
+          }
         else {
         // let existingPlayers = []
         let existingPlayers = this.state.showPlayerDetails
@@ -157,6 +160,12 @@ export default class Watchlist extends Component {
     // console.log(this.state)
     // let displayPlayerDetails = '';
     // if (this.state.showPlayerDetails.length != 0) {
+    // if (this.state.hasHistoricData) {
+
+    // }
+    // else {
+
+    // }
     let displayPlayerDetails = this.state.showPlayerDetails.map((onePlayerDetail) => {
       // console.log(onePlayerDetail)
       let shownDetails = '';

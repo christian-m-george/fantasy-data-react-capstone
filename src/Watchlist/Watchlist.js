@@ -27,7 +27,7 @@ export default class Watchlist extends Component {
       })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.length === 0) throw new Error("No players found");
         else {
 
@@ -47,15 +47,15 @@ export default class Watchlist extends Component {
   }
 
   removePlayer = (removePlayerId) => {
-    console.log(removePlayerId, 'this is remove player id')
-    console.log(this.state, 'this is show player deets')
+    // console.log(removePlayerId, 'this is remove player id')
+    // console.log(this.state, 'this is show player deets')
     let filteredArray = this.state.showPlayerDetails.filter(player => {
-      console.log(removePlayerId, player.PlayerID)
+      // console.log(removePlayerId, player.PlayerID)
       return player.PlayerID !== removePlayerId
     })
-    console.log(filteredArray, 'this is filtered array')
+    // console.log(filteredArray, 'this is filtered array')
     this.setState({ showPlayerDetails: filteredArray });
-    console.log(this.state, 'final state')
+    // console.log(this.state, 'final state')
   }
 
   // handleAddToWatchlist = (ev) => {
@@ -91,7 +91,7 @@ export default class Watchlist extends Component {
 
   renderWatchlistPlayers(playerId) {
     const searchURL = `${config.API_ENDPOINT}/player-detail/player/details/season/${playerId}`;
-    console.log(searchURL, "this is the endpoint");
+    // console.log(searchURL, "this is the endpoint");
 
     const options = {
       method: "GET",
@@ -110,7 +110,7 @@ export default class Watchlist extends Component {
         return res.json();
       })
       .then((data) => {
-        console.log(data, 'this is data from detail fetch');
+        // console.log(data, 'this is data from detail fetch');
         output.push(data)
         if (data.length === 0) {
           this.setState({
@@ -136,7 +136,7 @@ export default class Watchlist extends Component {
   }
 
   handleRemoveFromWatchlist = (removePlayerId, ev) => {
-    console.log('event triggered');
+    // console.log('event triggered');
     ev.preventDefault();
     fetch(`${config.API_ENDPOINT}/watchlist/${window.localStorage.getItem("user_id")}/${removePlayerId}`, {
       method: 'DELETE',
@@ -380,7 +380,7 @@ export default class Watchlist extends Component {
         }
         return shownDetails
       }
-      console.log(this.state)
+      // console.log(this.state)
     })
 
     return (

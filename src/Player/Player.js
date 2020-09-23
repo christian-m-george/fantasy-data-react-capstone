@@ -27,7 +27,7 @@ export default class Player extends Component {
     };
     fetch(searchURL, options)
       .then((res) => {
-        console.log(searchURL);
+        // console.log(searchURL);
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
         }
@@ -35,7 +35,7 @@ export default class Player extends Component {
       })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.totalItems === 0) throw new Error("No players found");
 
         const players = data.map((player) => {
@@ -63,7 +63,7 @@ export default class Player extends Component {
             Team: team,
           };
         });
-        console.log(players, 'this is players log')
+        // console.log(players, 'this is players log')
 
 
         this.setState({
@@ -79,7 +79,7 @@ export default class Player extends Component {
   }
 
   handleAddToWatchlist = (ev) => {
-    console.log('event triggered');
+    // console.log('event triggered');
     ev.preventDefault();
 
     const data = {}
@@ -90,7 +90,7 @@ export default class Player extends Component {
         data[value[0]] = value[1]
     }
 
-    console.log(data, 'this is the data from event target')
+    // console.log(data, 'this is the data from event target')
 
     fetch(`${config.API_ENDPOINT}/watchlist/`, {
       method: 'POST',
@@ -102,9 +102,9 @@ export default class Player extends Component {
     .then((response) => {
       return response.json()
     })
-    .then(console.log(this.state, 'first log'))
+    // .then(console.log(this.state, 'first log'))
     .then(playerJson => this.setState({watchlistPlayers: [...this.state.watchlistPlayers, playerJson.player_id]}))
-    .then(console.log(this.state), 'second log')
+    // .then(console.log(this.state), 'second log')
     .catch((err) => {
       this.setState({
         error: err.message,
@@ -155,7 +155,7 @@ export default class Player extends Component {
         this.setState({
           watchlistPlayers: watchlistArray,
         });
-        console.log(this.state)
+        // console.log(this.state)
       })
       .catch((err) => {
         this.setState({
@@ -168,7 +168,7 @@ export default class Player extends Component {
 
 
   render() {
-    console.log(this.state, "this is the state ");
+    // console.log(this.state, "this is the state ");
 
     let showPlayers = "";
 

@@ -22,9 +22,9 @@ export default class PlayerDetails extends Component {
       data[value[0]] = value[1]
     }
 
-    console.log(data, 'this is the data from event target')
+    // console.log(data, 'this is the data from event target')
 
-    console.log(config.API_ENDPOINT, "this is the endpoint");
+    // console.log(config.API_ENDPOINT, "this is the endpoint");
     const searchURL = `${config.API_ENDPOINT}/player-detail/player/details/season/${data.PlayerID}`;
 
     const options = {
@@ -35,7 +35,7 @@ export default class PlayerDetails extends Component {
     };
     fetch(searchURL, options)
       .then((res) => {
-        console.log(searchURL);
+        // console.log(searchURL);
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
         }
@@ -43,9 +43,9 @@ export default class PlayerDetails extends Component {
       })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data, 'this is data');
+        // console.log(data, 'this is data');
         const playerDetails = data[0];
-        console.log(playerDetails.Position, 'this is position')
+        // console.log(playerDetails.Position, 'this is position')
         let shownDetails = {};
         switch (playerDetails.Position) {
           case "QB":

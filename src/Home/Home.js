@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Player from "../Player/Player";
 import NavBar from "../NavBar/NavBar";
-import './Home.css'
 
 export default class Home extends Component {
   constructor(props) {

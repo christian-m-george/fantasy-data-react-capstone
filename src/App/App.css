@@ -347,22 +347,83 @@ footer a {
     font-size: 25px;
 }
 
+.player-card, .watchlist-card {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-bottom: 8px;
+}
 
-/*large desktop*/
-/* @media only screen and (max-width: 1600px) {
-    body {
-        border: 3px solid yellow;
-    }
-    .skills-container .skills-container-images figure {
-        width: 16%;
-    }
-} */
+.player-stat {
+    text-align: left;
+    margin-left: 5px;
+}
+
+.player-title {
+    text-align: center;
+}
+
+form input {
+    display: inline-block
+}
+
+.button-wrapper {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+button {
+    width: 40%;
+}
+
+
+.watchlist-header-wrapper h2 {
+    text-align: center
+}
+
+.player-card {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    padding: 7px;
+}
+
+.player-stat {
+    text-align: left;
+    margin-left: 5px;
+}
+
+.player-title {
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+form input {
+    display: inline-block
+}
+
+.button-wrapper {
+    width: 100%;
+    margin-top: 7px;
+    margin-bottom: 3px;
+}
+
+button {
+    width: 40%;
+}
 
 /*iPhone portrait*/
 @media only screen and (min-width: 320px) {
-    /* body {
-        border: 3px solid purple;
-    } */
+    .add-to-watchlist {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 /*iPhone landscape*/

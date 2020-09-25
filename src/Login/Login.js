@@ -3,8 +3,6 @@ import ValidationError from "../validation-error";
 import TokenService from "../Services/token-services";
 import AuthApiService from "../Services/auth-api-services";
 import config from '../config'
-import './Login.css'
-// const API_ENDPOINT = "http://localhost:8000";
 
 export default class Login extends Component {
   constructor(props) {
@@ -27,7 +25,6 @@ export default class Login extends Component {
   }
 
   redirectOnSetUser() {
-    // console.log('function running')
     if (localStorage.getItem('username') !== undefined) {
       window.location = '/home'
     }
@@ -50,7 +47,6 @@ export default class Login extends Component {
       password: password.value,
     })
       .then((data) => {
-        // console.log(data, "this is the data from auth");
         this.props.setUserId(data.userId);
         localStorage.setItem("user_id", data.userId);
         fetch(`${config.API_ENDPOINT}/user/user/id/${data.userId}`, {
@@ -61,14 +57,10 @@ export default class Login extends Component {
         })
           .then((res) => res.json())
           .then((data) => {
-            // console.log(data, 'this is the data')
             localStorage.setItem('username', data.username)
             this.redirectOnSetUser()
           })
-
-          // .then((data) => localStorage.setItem("username", data.username))
           .catch((err) => console.log(err));
-        // localStorage.setItem("username", data.username)
         email.value = "";
         password.value = "";
         TokenService.saveAuthToken(data.authToken);
@@ -117,7 +109,7 @@ export default class Login extends Component {
       <div className="container" id="container">
         <div className='nav-header-wrapper'>
           <h1 className='nav-header-title'>FantasyData</h1>
-          <p className='nav-header-text'>keep tabs on the fantasy players you like</p>
+          <p className='nav-header-text'>Browse a list of the top fantasy players from last year. Add them to your watchlist to keep a running tally of players you've got your eye on, as well as see detailed stastics from the previous season!</p>
         </div>
 
         <div className="form-container sign-in-container">
@@ -167,11 +159,6 @@ export default class Login extends Component {
             </div>
 
             <div className="error-message">{this.state.error}</div>
-            {/* <div className='demo-info'>
-                        <p className='login-form-p'><b>To view a demo use:</b></p>
-                        <p className='login-form-p'><b>Email:</b> artlover3000@test.com</p>
-                        <p className='login-form-p'><b>Password:</b> password1</p>
-                    </div> */}
           </form>
         </div>
       </div>

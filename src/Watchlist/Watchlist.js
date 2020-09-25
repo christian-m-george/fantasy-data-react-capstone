@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import config from '../config';
 import NavBar from "../NavBar/NavBar";
-import './Watchlist.css'
 
 export default class Watchlist extends Component {
 
@@ -16,7 +15,6 @@ export default class Watchlist extends Component {
   }
 
   componentDidMount() {
-    // console.log(config.API_ENDPOINT, "this is the endpoint");
     const searchURL = `${config.API_ENDPOINT}/watchlist/${window.localStorage.getItem("user_id")}`;
     fetch(searchURL)
       .then((res) => {
@@ -27,17 +25,12 @@ export default class Watchlist extends Component {
       })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
         if (data.length === 0) throw new Error("No players found");
         else {
-
-        // const showPlayerDetails = data.map((onePlayerId) => {
-        //   return this.renderWatchlistPlayers(onePlayerId.player_id)
         data.map((onePlayerId) => {
           return this.renderWatchlistPlayers(onePlayerId.player_id)
         }
         )}
-      // .then(console.log(this.state, 'this is state after component did mount'))
       })
       .catch((err) => {
         this.setState({
@@ -47,62 +40,16 @@ export default class Watchlist extends Component {
   }
 
   removePlayer = (removePlayerId) => {
-    // console.log(removePlayerId, 'this is remove player id')
-    // console.log(this.state, 'this is show player deets')
     let filteredArray = this.state.showPlayerDetails.filter(player => {
-      // console.log(removePlayerId, player.PlayerID)
       return player.PlayerID !== removePlayerId
     })
-    // console.log(filteredArray, 'this is filtered array')
     this.setState({ showPlayerDetails: filteredArray });
-    // console.log(this.state, 'final state')
   }
 
-  // handleAddToWatchlist = (ev) => {
-  //   // console.log('event triggered');
-  //   ev.preventDefault();
-
-  //   const data = {}
-
-  //   const formData = new FormData(ev.target)
-
-  //   for (let value of formData) {
-  //     data[value[0]] = value[1]
-  //   }
-
-  //   // console.log(data, 'this is the data from event target')
-
-  //   fetch(`${config.API_ENDPOINT}/watchlist/watchlist/${window.localStorage.user_id}`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'content-type': 'application/json',
-  //     },
-  //     body: JSON.stringify(data)
-  //   })
-  //     .then((response) => {
-  //       console.log(response);
-  //     })
-  //     .catch((err) => {
-  //       this.setState({
-  //         error: err.message,
-  //       });
-  //     });
-  // }
-
   renderWatchlistPlayers(playerId) {
-    const searchURL = `${config.API_ENDPOINT}/player-detail/player/details/season/${playerId}`;
-    // console.log(searchURL, "this is the endpoint");
-
-    const options = {
-      method: "GET",
-      header: {
-        "Content-Type": "application/json",
-      },
-    };
-
+    const searchURL = `${config.API_ENDPOINT}/player-detail/season/${playerId}`;
     let output = [];
-
-    fetch(searchURL, options)
+    fetch(searchURL)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
@@ -110,7 +57,6 @@ export default class Watchlist extends Component {
         return res.json();
       })
       .then((data) => {
-        // console.log(data, 'this is data from detail fetch');
         output.push(data)
         if (data.length === 0) {
           this.setState({
@@ -118,7 +64,6 @@ export default class Watchlist extends Component {
           });
           }
         else {
-        // let existingPlayers = []
         let existingPlayers = this.state.showPlayerDetails
         existingPlayers.push(data[0])
         this.setState({
@@ -126,7 +71,6 @@ export default class Watchlist extends Component {
           error: null,
         });
       }
-        // console.log(this.state.showPlayerDetails)
       })
       .catch((err) => {
         this.setState({
@@ -157,17 +101,7 @@ export default class Watchlist extends Component {
   }
 
   render() {
-    // console.log(this.state)
-    // let displayPlayerDetails = '';
-    // if (this.state.showPlayerDetails.length != 0) {
-    // if (this.state.hasHistoricData) {
-
-    // }
-    // else {
-
-    // }
     let displayPlayerDetails = this.state.showPlayerDetails.map((onePlayerDetail) => {
-      // console.log(onePlayerDetail)
       let shownDetails = '';
       if (onePlayerDetail != undefined) {
         switch (onePlayerDetail.Position) {
@@ -380,7 +314,6 @@ export default class Watchlist extends Component {
         }
         return shownDetails
       }
-      // console.log(this.state)
     })
 
     return (

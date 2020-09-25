@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ValidationError from "../validation-error";
 import AuthApiService from "../Services/auth-api-services";
-import "./Register.css";
 
 export default class Register extends Component {
   static defaultProps = {
@@ -60,7 +59,6 @@ export default class Register extends Component {
       password,
       repeatPassword
     } = ev.target;
-    // console.log(userName.value, email.value, password.value)
     this.setState({ error: null });
     AuthApiService.postUser({
       username: userName.value,
@@ -68,15 +66,12 @@ export default class Register extends Component {
       password: password.value,
     })
       .then((user) => {
-        // console.log(user, 'this is user')
         userName.value = "";
         email.value = "";
         password.value = "";
         repeatPassword.value = "";
-        // this.handleLoginSuccess();
       })
       .catch((err) => {
-        // console.log(err)
         this.setState({ error: err });
       });
   };

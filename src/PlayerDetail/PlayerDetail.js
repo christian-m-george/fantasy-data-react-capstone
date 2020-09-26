@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import config from "../config";
-// import ValidationError from "../validation-error";
-// import AuthApiService from "../Services/auth-api-services";
 
 export default class PlayerDetails extends Component {
   constructor(props) {
@@ -22,9 +20,6 @@ export default class PlayerDetails extends Component {
       data[value[0]] = value[1]
     }
 
-    // console.log(data, 'this is the data from event target')
-
-    // console.log(config.API_ENDPOINT, "this is the endpoint");
     const searchURL = `${config.API_ENDPOINT}/player-detail/player/details/season/${data.PlayerID}`;
 
     const options = {
@@ -35,7 +30,6 @@ export default class PlayerDetails extends Component {
     };
     fetch(searchURL, options)
       .then((res) => {
-        // console.log(searchURL);
         if (!res.ok) {
           throw new Error("Something went wrong, please try again later.");
         }
@@ -43,9 +37,7 @@ export default class PlayerDetails extends Component {
       })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data, 'this is data');
         const playerDetails = data[0];
-        // console.log(playerDetails.Position, 'this is position')
         let shownDetails = {};
         switch (playerDetails.Position) {
           case "QB":
@@ -69,7 +61,6 @@ export default class PlayerDetails extends Component {
               PassingYardsPerAttempt: playerDetails.PassingYardsPerAttempt,
               PassingYardsPerCompletion: playerDetails.PassingYardsPerCompletion,
               Played: playerDetails.Played,
-              // ScoringDetails: (19) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
               Touchdowns: playerDetails.Touchdowns,
               TwoPointConversionPasses: playerDetails.TwoPointConversionPasses,
               TwoPointConversionReceptions: playerDetails.TwoPointConversionReceptions,
@@ -103,7 +94,6 @@ export default class PlayerDetails extends Component {
               RushingTouchdowns: playerDetails.RushingTouchdowns,
               RushingYards: playerDetails.RushingYards,
               RushingYardsPerAttempt: playerDetails.RushingYardsPerAttempt,
-              // ScoringDetails: [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
               Started: playerDetails.Started,
               Touchdowns: playerDetails.Touchdowns,
               TwoPointConversionPasses: playerDetails.TwoPointConversionPasses,
@@ -137,7 +127,6 @@ export default class PlayerDetails extends Component {
               RushingTouchdowns: playerDetails.RushingTouchdowns,
               RushingYards: playerDetails.RushingYards,
               RushingYardsPerAttempt: playerDetails.RushingYardsPerAttempt,
-              // ScoringDetails: [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
               Started: playerDetails.Started,
               Touchdowns: playerDetails.Touchdowns,
               TwoPointConversionPasses: playerDetails.TwoPointConversionPasses,
@@ -171,7 +160,6 @@ export default class PlayerDetails extends Component {
               RushingTouchdowns: playerDetails.RushingTouchdowns,
               RushingYards: playerDetails.RushingYards,
               RushingYardsPerAttempt: playerDetails.RushingYardsPerAttempt,
-              // ScoringDetails: [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
               Started: playerDetails.Started,
               Touchdowns: playerDetails.Touchdowns,
               TwoPointConversionPasses: playerDetails.TwoPointConversionPasses,
@@ -211,11 +199,6 @@ export default class PlayerDetails extends Component {
           default:
         }
  
-
-        // this.setState({
-        //   players: players,
-        //   error: null,
-        // });
       })
       .catch((err) => {
         this.setState({
@@ -225,7 +208,6 @@ export default class PlayerDetails extends Component {
   }
 
   render() {
-    // console.log(this.state.players, "this is the state ");
 
     let showPlayers = "";
 

@@ -80,7 +80,6 @@ export default class Watchlist extends Component {
   }
 
   handleRemoveFromWatchlist = (removePlayerId, ev) => {
-    // console.log('event triggered');
     ev.preventDefault();
     fetch(`${config.API_ENDPOINT}/watchlist/${window.localStorage.getItem("user_id")}/${removePlayerId}`, {
       method: 'DELETE',
